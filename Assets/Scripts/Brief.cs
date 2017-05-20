@@ -30,6 +30,16 @@ public class Brief : MonoBehaviour {
 			ProjectPoints -= assignedEmployees[i].ProjectPointsRate *Time.deltaTime;
 		}
 	}
+
+	public void AddEmployee(){
+		assignedEmployees.Add(new Employee());
+		NumEmployees++;
+	}
+	public void RemoveEmployee(int EmployeeIndex){
+		assignedEmployees.RemoveAt(EmployeeIndex);
+		NumEmployees--;
+	}
+
 	public string GetBriefName(){
 		return BriefName;
 	}
