@@ -11,9 +11,12 @@ public class Brief : MonoBehaviour {
 	public float Cost;
 	public float time;
 	public float reward;
+	public float deadline = 20f;
+	public float elapsedTime;
+
 	// Use this for initialization
 
-	void Start () {
+	public Brief() {
 		BriefName = "Test Project";
 		ProjectPoints = 10f;
 		for(int i = 0; i<NumEmployees; i++){
@@ -29,6 +32,7 @@ public class Brief : MonoBehaviour {
 		for(int i = 0; i<NumEmployees; i++){
 			ProjectPoints -= assignedEmployees[i].ProjectPointsRate *Time.deltaTime;
 		}
+		elapsedTime += Time.deltaTime;
 	}
 
 	public void AddEmployee(){
