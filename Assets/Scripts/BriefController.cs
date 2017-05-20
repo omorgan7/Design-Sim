@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class BriefController : MonoBehaviour {
 
-	GameObject BriefGameObject;
+	public GameObject BriefGameObject;
 	Brief brief;
 	// Use this for initialization
 	void Start(){
-		BriefGameObject = GameObject.Find("Briefs");
 		brief = BriefGameObject.GetComponent<Brief>();
 	}
 	// Update is called once per frame
 	void Update () {
-		print(brief.RemainingProjectPoints());
+		if(BriefGameObject != null){
+			print(brief.RemainingProjectPoints());
+			brief.PerformProgress();
+			if(brief.RemainingProjectPoints() <= 0f){
+				Destroy(BriefGameObject);
+			}
+		}
 	}
 }

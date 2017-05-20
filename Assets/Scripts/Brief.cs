@@ -9,7 +9,7 @@ public class Brief : MonoBehaviour {
 	Employee[] assignedEmployees;
 	public int NumEmployees = 5;
 	// Use this for initialization
-	
+
 	void Start () {
 		BriefName = "Test Project";
 		ProjectPoints = 10f;
@@ -18,5 +18,11 @@ public class Brief : MonoBehaviour {
 
 	public float RemainingProjectPoints(){
 		return ProjectPoints;
+	}
+
+	public void PerformProgress(){
+		for(int i = 0; i<NumEmployees; i++){
+			ProjectPoints -= assignedEmployees[i].ProjectPointsRate *Time.deltaTime;
+		}
 	}
 }
