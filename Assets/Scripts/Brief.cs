@@ -6,14 +6,16 @@ public class Brief : MonoBehaviour {
 
 	private string BriefName;
 	private float ProjectPoints;
-	Employee[] assignedEmployees;
+	List<Employee> assignedEmployees = new List<Employee>();
 	public int NumEmployees = 5;
 	// Use this for initialization
 
 	void Start () {
 		BriefName = "Test Project";
 		ProjectPoints = 10f;
-		assignedEmployees = new Employee[NumEmployees];
+		for(int i = 0; i<NumEmployees; i++){
+			assignedEmployees.Add(new Employee());
+		}
 	}
 
 	public float RemainingProjectPoints(){
