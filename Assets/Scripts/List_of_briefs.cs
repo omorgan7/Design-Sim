@@ -3,16 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Task
-{
-    public string TaskName;
-	public GameObject TaskDescription;
-	public float time_diff;
 
-}
 public class List_of_briefs : MonoBehaviour {
 	
-    public List<Task> TaskList;
+    public List<Brief> TaskList;
     public Transform contentPanel;
 
 	// Use this for initialization
