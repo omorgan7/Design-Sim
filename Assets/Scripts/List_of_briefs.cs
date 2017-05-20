@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Task
 {
     public string TaskName;
+	public GameObject TaskDescription;
+	public float time_diff;
+
 }
 public class List_of_briefs : MonoBehaviour {
 	

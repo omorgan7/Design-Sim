@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class TaskButtons : MonoBehaviour {
 
-	public Button buttonComponent;
-    public Text nameLabel;
-  
+	public Button yourButton;
     private Task task;
-    private List_of_briefs scrollList;
-    
+	public GameObject ModalBox;
+	private GameObject box;
+
 
 	// Use this for initialization
 	void Start () {
-		buttonComponent.onClick.AddListener (HandleClick);
+		Button btn = yourButton.GetComponent<Button>();
+        btn.onClick.AddListener(TaskOnClick);
 	}
-	 public void HandleClick()
+	 public void TaskOnClick()
     {
-    
+    box = Instantiate(ModalBox,Vector3.zero,Quaternion.identity);
     }
 	
 	// Update is called once per frame
