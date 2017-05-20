@@ -11,30 +11,28 @@ public class TaskButtons : MonoBehaviour {
 	public GameObject ModalBox;
 	private GameObject box;
 	public GameObject parent;
-
+	private BriefController BC;
 	private Text txt;
 
 
 	// Use this for initialization
-	void Start () {
+	void Start (){
 		Button btn = yourButton.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
 		txt = btn_text.GetComponent<Text>();
-		var BriefObject = GameObject.Find("EventSystem/Briefs");
-		brief = BriefObject.GetComponent<Brief>();
-		txt.text ="  " +  brief.GetBriefName();
+		GameObject EventSystem = GameObject.Find("EventSystem");
+		BC = EventSystem.GetComponent<BriefController>();
 	}
-	 public void TaskOnClick()
-    {
-    box = Instantiate(ModalBox,Vector3.zero,Quaternion.identity);
+	 public void TaskOnClick(){
+		box = Instantiate(ModalBox,Vector3.zero,Quaternion.identity);
     }
 	
 	// Update is called once per frame
 	void Update () {
-
-		if (brief == null){
-			Destroy(parent);
-		}
-		
+		brief = BC.BriefsList[0];
+		txt.text =" " + brief.GetBriefName();
+	}
+	public void Setup(Brief newbrief){
+		brief = newbrief;
 	}
 }

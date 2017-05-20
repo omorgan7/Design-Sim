@@ -8,14 +8,16 @@ public class List_of_briefs : MonoBehaviour {
 	
   //  public List<Brief> TaskList;
     public Transform contentPanel;
+	public GameObject button;
 
 	private Brief brief;
-
+	private BriefController BC;
+	bool onebutton = false;
 	// Use this for initialization
 	void Start () {
-		RefreshDisplay ();
-		var BriefObject = GameObject.Find("EventSystem/Briefs");
-		brief = BriefObject.GetComponent<Brief>();
+		//RefreshDisplay ();
+		GameObject EventSystem = GameObject.Find("EventSystem");
+		BC = EventSystem.GetComponent<BriefController>();
 
 	}
 	void RefreshDisplay(){
@@ -25,15 +27,22 @@ public class List_of_briefs : MonoBehaviour {
 
 	}
 	private void AddButtons(){
-		GameObject newButton = GameObject.Find("Task Button");
-		newButton.transform.SetParent(contentPanel);   
+		if(onebutton == false){
+			GameObject newButton = Instantiate(button, Vector3.zero, Quaternion.identity);
+			newButton.transform.SetParent(contentPanel);   
+			GameObject temp = GameObject.Find("Task 1");
+			TaskButtons sampleButton = temp.GetComponent<TaskButtons>();
+			sampleButton.Setup(brief);
+		}
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(brief != null){
+		brief = BC.BriefsList[0];
+		if(BC.BriefLength>0){
 			AddButtons();
+			onebutton = true;
 		}
 		
 	}

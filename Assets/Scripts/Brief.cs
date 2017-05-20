@@ -17,7 +17,7 @@ public class Brief : MonoBehaviour {
 	// Use this for initialization
 
 
-	void Start () {
+
 	public Brief() {
 		BriefName = "Test Project";
 		ProjectPoints = 10f;
@@ -25,7 +25,6 @@ public class Brief : MonoBehaviour {
 			assignedEmployees.Add(new Employee());
 		}
 	}
-
 	public float RemainingProjectPoints(){
 		return ProjectPoints;
 	}

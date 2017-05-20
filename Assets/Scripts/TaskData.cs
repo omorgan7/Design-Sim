@@ -28,13 +28,11 @@ public class TaskData : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(brief == null){
-			Destroy(panel);
-		}
-		else{
+	
+	
 			one.text = "Brief Name: " + brief.GetBriefName();
 			two.text= "Project Points: " + brief.GetProjectPoints();
 			three.text = "Number of Employees: " + brief.GetNumEmployees();	
-		}
+		
 	}
 }
