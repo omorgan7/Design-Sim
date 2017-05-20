@@ -6,7 +6,7 @@ using UnityEngine;
 public class TaskButtons : MonoBehaviour {
 
 	public Button yourButton;
-    private Task task;
+    private Brief task;
 	public GameObject ModalBox;
 	private GameObject box;
 
@@ -14,7 +14,7 @@ public class TaskButtons : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Button btn = yourButton.GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);
+        btn.onClick.AddListener(TaskOnClick);		
 	}
 	 public void TaskOnClick()
     {
