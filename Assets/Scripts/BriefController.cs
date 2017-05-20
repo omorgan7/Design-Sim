@@ -13,7 +13,6 @@ public class BriefController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(BriefGameObject != null){
-			print(brief.RemainingProjectPoints());
 			brief.PerformProgress();
 			if(brief.RemainingProjectPoints() <= 0f){
 				Destroy(BriefGameObject);
