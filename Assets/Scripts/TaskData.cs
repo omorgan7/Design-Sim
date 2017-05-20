@@ -32,5 +32,4 @@ public class TaskData : MonoBehaviour {
 		one.text = "Brief Name: " + brief.GetBriefName();
 		two.text= "Project Points: " + brief.GetProjectPoints();
 		three.text = "Number of Employees: " + brief.GetNumEmployees();	
-	}
 }
