@@ -16,7 +16,7 @@ public class SpawnBrief : MonoBehaviour {
 	}
 	void Update () {
 		if(box == null){
-			briefSpawnChance += chanceIncrease;
+			briefSpawnChance += chanceIncrease*Time.deltaTime;
 			float randomNum = Random.value;
 			if(randomNum <= briefSpawnChance){
 				box = Instantiate(ModalBox,Vector3.zero,Quaternion.identity);
