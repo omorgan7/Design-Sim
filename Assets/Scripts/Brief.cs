@@ -25,4 +25,11 @@ public class Brief : MonoBehaviour {
 			ProjectPoints -= assignedEmployees[i].ProjectPointsRate *Time.deltaTime;
 		}
 	}
+	public string GetBriefName(){
+		return BriefName;
+	}
+	public int GetNumEmployees(){
+		return NumEmployees;
+	}
+	
 }
