@@ -843,6 +843,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BriefGameObject: {fileID: 1620795729}
+  BriefsList: []
+  PriorityFactor: []
+  BriefLength: 0
 --- !u!1 &917580058
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,7 +1289,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1620795730}
-  - component: {fileID: 1620795731}
   m_Layer: 0
   m_Name: Briefs
   m_TagString: Untagged
@@ -1307,21 +1309,6 @@ Transform:
   m_Father: {fileID: 758550463}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1620795731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1620795729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f0d4473540f44f2c9f23c1c3d1d83a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NumEmployees: 5
-  Cost: 0
-  time: 0
-  reward: 0
 --- !u!1 &1627510492
 GameObject:
   m_ObjectHideFlags: 0
