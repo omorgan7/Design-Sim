@@ -11,6 +11,7 @@ public class TaskData : MonoBehaviour {
 	private Text two;
 	private Text three;
 	Brief brief;
+	public GameObject panel;
 
 	//Use this for initialization
 	void Start () {
@@ -25,12 +26,14 @@ public class TaskData : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		one.text = "Brief Name: " + brief.GetBriefName();
-		two.text= "Project Points: " + brief.GetProjectPoints();
-		three.text = "Number of Employees: " + brief.GetNumEmployees();	
-
-		if(brief.GetProjectPoints()<=0){
-			
+		if(brief == null){
+			Destroy(panel);
 		}
+		else{
+			one.text = "Brief Name: " + brief.GetBriefName();
+			two.text= "Project Points: " + brief.GetProjectPoints();
+			three.text = "Number of Employees: " + brief.GetNumEmployees();	
+		}
+
 	}
 }

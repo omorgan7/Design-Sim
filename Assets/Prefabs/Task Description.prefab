@@ -447,7 +447,7 @@ MonoBehaviour:
   BriefName: {fileID: 1169179748981700}
   ProjectPoints: {fileID: 1446436248887978}
   NumEmployees: {fileID: 1011659920195282}
-  BriefGameObject: {fileID: 0}
+  panel: {fileID: 1520202752200262}
 --- !u!114 &114929197987343830
 MonoBehaviour:
   m_ObjectHideFlags: 1

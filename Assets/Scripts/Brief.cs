@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Brief : MonoBehaviour {
 
-	private string BriefName;
+	private string BriefName = "Test Project";
 	private float ProjectPoints;
 	List<Employee> assignedEmployees = new List<Employee>();
 	public int NumEmployees = 5;
@@ -14,7 +14,6 @@ public class Brief : MonoBehaviour {
 	// Use this for initialization
 
 	void Start () {
-		BriefName = "Test Project";
 		ProjectPoints = 10f;
 		for(int i = 0; i<NumEmployees; i++){
 			assignedEmployees.Add(new Employee());
