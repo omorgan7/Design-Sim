@@ -22,19 +22,15 @@ public class TaskData : MonoBehaviour {
 		three = NumEmployees.GetComponent<Text>();
 		GameObject EventSystem = GameObject.Find("EventSystem");
 		BC = EventSystem.GetComponent<BriefController>();
-		brief = BC.BriefsList[0];
+
 				
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(brief == null){
-			Destroy(panel);
-		}
-		else{
-			one.text = "Brief Name: " + brief.GetBriefName();
-			two.text= "Project Points: " + brief.GetProjectPoints();
-			three.text = "Number of Employees: " + brief.GetNumEmployees();	
-		}
+		brief = BC.BriefsList[0];
+		one.text = "Brief Name: " + brief.GetBriefName();
+		two.text= "Project Points: " + brief.GetProjectPoints();
+		three.text = "Number of Employees: " + brief.GetNumEmployees();	
 	}
 }

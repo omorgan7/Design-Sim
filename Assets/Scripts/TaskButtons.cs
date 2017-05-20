@@ -11,6 +11,7 @@ public class TaskButtons : MonoBehaviour {
 	public GameObject ModalBox;
 	private GameObject box;
 	public GameObject parent;
+	private BriefController BC;
 
 	private Text txt;
 
@@ -20,13 +21,13 @@ public class TaskButtons : MonoBehaviour {
 		Button btn = yourButton.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
 		txt = btn_text.GetComponent<Text>();
-		var BriefObject = GameObject.Find("EventSystem/Briefs");
-		brief = BriefObject.GetComponent<Brief>();
+		GameObject EventSystem = GameObject.Find("EventSystem");
+		BC = EventSystem.GetComponent<BriefController>();
+		brief = BC.BriefsList[0];
 		txt.text ="  " +  brief.GetBriefName();
 	}
-	 public void TaskOnClick()
-    {
-    box = Instantiate(ModalBox,Vector3.zero,Quaternion.identity);
+	public void TaskOnClick(){
+    	box = Instantiate(ModalBox,Vector3.zero,Quaternion.identity);
     }
 	
 	// Update is called once per frame
