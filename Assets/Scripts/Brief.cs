@@ -8,6 +8,9 @@ public class Brief : MonoBehaviour {
 	private float ProjectPoints;
 	List<Employee> assignedEmployees = new List<Employee>();
 	public int NumEmployees = 5;
+	public float Cost;
+	public float time;
+	public float reward;
 	// Use this for initialization
 
 	void Start () {
@@ -36,4 +39,15 @@ public class Brief : MonoBehaviour {
 		assignedEmployees.RemoveAt(EmployeeIndex);
 		NumEmployees--;
 	}
+
+	public string GetBriefName(){
+		return BriefName;
+	}
+	public string GetNumEmployees(){
+		return NumEmployees.ToString();
+	}
+	public string GetProjectPoints(){
+		return ProjectPoints.ToString();
+	}
+	
 }
