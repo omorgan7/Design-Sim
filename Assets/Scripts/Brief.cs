@@ -19,6 +19,8 @@ public class Brief : MonoBehaviour {
 	public Brief() {
 		BriefName = "Test Project";
 		ProjectPoints = 10f;
+		Cost = 50f;
+		reward = 100f;
 		for(int i = 0; i<NumEmployees; i++){
 			assignedEmployees.Add(new Employee());
 		}
@@ -53,6 +55,15 @@ public class Brief : MonoBehaviour {
 	}
 	public string GetProjectPoints(){
 		return ProjectPoints.ToString();
+	}
+	public string GetProjectCost(){
+		return Cost.ToString();
+	}
+	public string GetProjectReward(){
+		return reward.ToString();
+	}
+	public string GetProjectDeadline(){
+		return deadline.ToString();
 	}
 	
 }

@@ -4,15 +4,14 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class TaskButtons : MonoBehaviour {
-
+	public GameObject ModalBox;
 	public Button yourButton;
 	public GameObject btn_text;
 	private Brief brief;
-	public GameObject ModalBox;
+
 	private GameObject box;
 	public GameObject parent;
 	private BriefController BC;
-
 	private Text txt;
 
 
@@ -33,8 +32,11 @@ public class TaskButtons : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		brief = BC.BriefsList[0];
 		txt.text =" " + brief.GetBriefName();
+
+
 	}
 	public void Setup(Brief newbrief){
 		brief = newbrief;

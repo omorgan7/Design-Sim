@@ -7,29 +7,40 @@ public class TaskData : MonoBehaviour {
 	public GameObject BriefName;
 	public GameObject ProjectPoints;
 	public GameObject NumEmployees;
-
+	public GameObject reward;
+	public GameObject deadline;
+	public GameObject cost;
+	public GameObject panel;
+	
 	private BriefController BC;
 	private Text one;
 	private Text two;
 	private Text three;
-	Brief brief;
-	public GameObject panel;
+	private Text four;
+	private Text five;
+	private Text six;
+	private Brief brief;
 
 	//Use this for initialization
 	void Start () {
 		one = BriefName.GetComponent<Text>();
 		two = ProjectPoints.GetComponent<Text>();
-		three = NumEmployees.GetComponent<Text>();
+		three = cost.GetComponent<Text>();
+		four = reward.GetComponent<Text>();
+		five = NumEmployees.GetComponent<Text>();
+		six = deadline.GetComponent<Text>();
 		GameObject EventSystem = GameObject.Find("EventSystem");
-		BC = EventSystem.GetComponent<BriefController>();
-
-				
+		BC = EventSystem.GetComponent<BriefController>();				
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		brief = BC.BriefsList[0];
-		one.text = "Brief Name: " + brief.GetBriefName();
+		one.text = brief.GetBriefName();
 		two.text= "Project Points: " + brief.GetProjectPoints();
-		three.text = "Number of Employees: " + brief.GetNumEmployees();	
+		three.text = "Project Cost: £" + brief.GetProjectCost();
+		four.text = "Project Reward: £" + brief.GetProjectReward();
+		five.text = "Number of Employees: " + brief.GetNumEmployees();	
+		six.text = "Project Deadline: " + brief.GetProjectDeadline();
+	}
 }

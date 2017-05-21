@@ -12,7 +12,7 @@ public class List_of_briefs : MonoBehaviour {
 
 	private Brief brief;
 	private BriefController BC;
-	bool onebutton = false;
+	private bool onebutton = false;
 	// Use this for initialization
 	void Start () {
 		//RefreshDisplay ();
@@ -29,7 +29,7 @@ public class List_of_briefs : MonoBehaviour {
 	private void AddButtons(){
 		if(onebutton == false){
 			GameObject newButton = Instantiate(button, Vector3.zero, Quaternion.identity);
-			newButton.transform.SetParent(contentPanel);   
+			newButton.transform.SetParent(contentPanel.transform, false);
 			GameObject temp = GameObject.Find("Task 1");
 			TaskButtons sampleButton = temp.GetComponent<TaskButtons>();
 			sampleButton.Setup(brief);
@@ -44,6 +44,5 @@ public class List_of_briefs : MonoBehaviour {
 			AddButtons();
 			onebutton = true;
 		}
-		
 	}
 }
