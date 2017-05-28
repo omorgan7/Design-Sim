@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class List_of_briefs : MonoBehaviour {
 	
   //  public List<Brief> TaskList;
-    public Transform contentPanel;
+    public RectTransform contentPanel;
 	public GameObject button;
 
 	private Brief brief;
@@ -18,6 +18,7 @@ public class List_of_briefs : MonoBehaviour {
 		//RefreshDisplay ();
 		GameObject EventSystem = GameObject.Find("EventSystem");
 		BC = EventSystem.GetComponent<BriefController>();
+	print(contentPanel.position.x);
 
 	}
 	void RefreshDisplay(){
@@ -28,11 +29,14 @@ public class List_of_briefs : MonoBehaviour {
 	}
 	private void AddButtons(){
 		if(onebutton == false){
-			GameObject newButton = Instantiate(button, Vector3.zero, Quaternion.identity);
-			newButton.transform.SetParent(contentPanel.transform, false);
-			GameObject temp = GameObject.Find("Task 1");
-			TaskButtons sampleButton = temp.GetComponent<TaskButtons>();
-			sampleButton.Setup(brief);
+			for (int i =0; i< BC.BriefLength ; i++){
+				GameObject newButton = Instantiate(button, Vector3.zero, Quaternion.identity);
+
+				newButton.transform.SetParent(contentPanel.transform, false);
+				GameObject temp = GameObject.Find("Task 1");
+				TaskButtons sampleButton = temp.GetComponent<TaskButtons>();
+				sampleButton.Setup(brief);
+			}
 		}
 
 	}
