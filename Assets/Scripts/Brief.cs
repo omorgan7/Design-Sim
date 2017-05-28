@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Brief : MonoBehaviour {
+public class Brief{
 
 	private string BriefName ;
 	private float ProjectPoints;
