@@ -45,8 +45,10 @@ public class List_of_briefs : MonoBehaviour {
 				ArrowController Arrows = newButton.GetComponent<ArrowController>();
 				Arrows.inputPosition(i);
 				newButton.transform.SetParent(contentPanel.transform, false);
-				GameObject temp = GameObject.Find("Task 1");
-				TaskButtons sampleButton = temp.GetComponent<TaskButtons>();
+				//GameObject temp = GameObject.Find("Task 1");
+				TaskButtons sampleButton = newButton.GetComponent<TaskButtons>();
+				TaskData data = sampleButton.GetComponent<TaskData>();
+				print(data==null);
 				//Brief B = BC.BriefsList[0];
 				sampleButton.Setup(BC.BriefsList[i]);
 			}
@@ -56,14 +58,16 @@ public class List_of_briefs : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		print(BC.BriefLength);
-		if(BC.BriefLength>0){
+if(BC.isChanged == true){
+	if(BC.BriefLength>0){
 			RemoveButtons();
 			AddButtons();
 		}
 		else{
 			RemoveButtons();
 		}
+		BC.isChanged = false;
+}
+		
 	}
 }

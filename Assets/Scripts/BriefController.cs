@@ -11,6 +11,7 @@ public class BriefController : MonoBehaviour {
 	void Start(){
 		AddBrief();
 		AddBrief();
+		BriefsList[1].ChangeName("test new name");
 	}
 	// Update is called once per frame
 	void Update () {

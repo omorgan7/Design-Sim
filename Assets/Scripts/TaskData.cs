@@ -41,8 +41,16 @@ public class TaskData : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		brief = BC.BriefsList[0];
-		print(brief== null);
+		// brief = BC.BriefsList[0];
+		// print(brief== null);
+		// one.text = brief.GetBriefName();
+		// two.text= "Project Points: " + brief.GetProjectPoints();
+		// three.text = "Project Cost: £" + brief.GetProjectCost();
+		// four.text = "Project Reward: £" + brief.GetProjectReward();
+		// five.text = "Number of Employees: " + brief.GetNumEmployees();	
+		// six.text = "Project Deadline: " + brief.GetProjectDeadline();
+	}
+	public void Setup(Brief brief){
 		one.text = brief.GetBriefName();
 		two.text= "Project Points: " + brief.GetProjectPoints();
 		three.text = "Project Cost: £" + brief.GetProjectCost();

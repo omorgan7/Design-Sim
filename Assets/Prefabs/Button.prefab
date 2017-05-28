@@ -85,7 +85,6 @@ GameObject:
   - component: {fileID: 224218021080474640}
   - component: {fileID: 222832123621171084}
   - component: {fileID: 114035988205321090}
-  - component: {fileID: 114473670336618154}
   m_Layer: 5
   m_Name: Task 1
   m_TagString: Untagged
@@ -141,6 +140,7 @@ GameObject:
   - component: {fileID: 114853461257951770}
   - component: {fileID: 114917853793703614}
   - component: {fileID: 114720146770347580}
+  - component: {fileID: 114473023830200676}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -284,12 +284,12 @@ MonoBehaviour:
   m_Text: 'Down
 
 '
---- !u!114 &114473670336618154
+--- !u!114 &114473023830200676
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1443731056321340}
+  m_GameObject: {fileID: 1698069800180236}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef2204e6d4741774e95074fdd831087e, type: 3}
@@ -312,7 +312,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Up: {fileID: 114297589076089584}
   Down: {fileID: 114896481278436202}
-  Briefs: {fileID: 0}
 --- !u!114 &114853461257951770
 MonoBehaviour:
   m_ObjectHideFlags: 1

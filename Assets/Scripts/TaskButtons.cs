@@ -30,9 +30,7 @@ public class TaskButtons : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// if (BC.BriefLength>0){
-		// 	txt.text =" " + brief.GetBriefName();
-		// }
+	
 
 
 	}
@@ -40,6 +38,6 @@ public class TaskButtons : MonoBehaviour {
 		brief = newbrief;
 		print(brief == null);
 		txt = btn_text.GetComponent<Text>();
-		txt.text ="  " +  brief.GetBriefName();
+		txt.text =" " +  brief.GetBriefName();
 	}
 }
