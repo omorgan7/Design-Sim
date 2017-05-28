@@ -13,14 +13,20 @@ public class List_of_briefs : MonoBehaviour {
 	private Brief brief;
 	private BriefController BC;
 	private bool onebutton = false;
+	private Vector3 parentPos;
+	private float height;
+	private float width;
+	private float buttonheight;
 	// Use this for initialization
 	void Start () {
 		//RefreshDisplay ();
 		GameObject EventSystem = GameObject.Find("EventSystem");
 		BC = EventSystem.GetComponent<BriefController>();
-		//Vector3
-		float width = contentPanel.rect.width;
-		float height = contentPanel.rect.height;
+	//	parentPos = new Vector3(contentPanel.localposition.x,contentPanel.position.y, contentPanel.position.z) ;
+		width = contentPanel.rect.width;
+		height = contentPanel.rect.height;
+		buttonheight = button.GetComponent<RectTransform> ().rect.height;
+		print(height);
 
 	}
 	void RefreshDisplay(){
@@ -31,11 +37,11 @@ public class List_of_briefs : MonoBehaviour {
 	}
 	private void AddButtons(){
 		if(onebutton == false){
-			for (int i =0; i<1; i++){
-				Vector3 pos = 
-				GameObject newButton = Instantiate(button, Vector3.zero, Quaternion.identity);
+			for (int i =0; i<BC.BriefLength; i++){
+				Vector3 pos = new Vector3(- width/2.0f, height/2.0f-(buttonheight+5.0f)*(i+1), 0.0f );
+				GameObject newButton = Instantiate(button, pos, Quaternion.identity);
 
-			//	newButton.transform.SetParent(contentPanel.transform, false);
+				newButton.transform.SetParent(contentPanel.transform, false);
 				GameObject temp = GameObject.Find("Task 1");
 				TaskButtons sampleButton = temp.GetComponent<TaskButtons>();
 				sampleButton.Setup(brief);
