@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 
 public class List_of_briefs : MonoBehaviour {
-	
-  //  public List<Brief> TaskList;
+
     public RectTransform contentPanel;
 	public GameObject button;
 	private BriefController BC;
@@ -14,11 +13,10 @@ public class List_of_briefs : MonoBehaviour {
 	private bool onebutton = false;
 	private float height;
 	private float width;
-	private TaskData data;
 	private float buttonheight;
+
 	// Use this for initialization
 	void Start () {
-		//RefreshDisplay ();
 		GameObject EventSystem = GameObject.Find("EventSystem");
 		BC = EventSystem.GetComponent<BriefController>();
 		width = contentPanel.rect.width;
@@ -29,11 +27,8 @@ public class List_of_briefs : MonoBehaviour {
 	
 	}
 	private void RemoveButtons(){
-	//.Destroy(contentPanel.transform.GetChild (0)); 
-		// Button[] buttons = contentPanel.GetComponentsInChildren<Button>();
-		// print(buttons.Length);
-		int childs = transform.childCount;
-		for(int i=0; i<childs; i++){
+		int NumberOfButtons = transform.childCount;
+		for(int i=0; i< NumberOfButtons; i++){
 			GameObject.Destroy(contentPanel.GetChild(i).gameObject);
 		}
 	}
@@ -44,12 +39,7 @@ public class List_of_briefs : MonoBehaviour {
 				ArrowController Arrows = newButton.GetComponent<ArrowController>();
 				Arrows.inputPosition(i);
 				newButton.transform.SetParent(contentPanel.transform, false);
-				//GameObject temp = GameObject.Find("Task 1");
 				TaskButtons sampleButton = newButton.GetComponent<TaskButtons>();
-				
-				
-				
-				//Brief B = BC.BriefsList[0];
 				sampleButton.Setup(BC.BriefsList[i]);
 			}
 		
@@ -58,16 +48,15 @@ public class List_of_briefs : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-if(BC.isChanged == true){
-	if(BC.BriefLength>0){
-			RemoveButtons();
-			AddButtons();
+		if(BC.isChanged == true){
+			if(BC.BriefLength>0){
+				RemoveButtons();
+				AddButtons();
+			}
+			else{
+				RemoveButtons();
+			}
+			BC.isChanged = false;	
 		}
-		else{
-			RemoveButtons();
-		}
-		BC.isChanged = false;	
-}
-		
 	}
 }
