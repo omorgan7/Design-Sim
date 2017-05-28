@@ -11,6 +11,8 @@ public class TaskData : MonoBehaviour {
 	public GameObject deadline;
 	public GameObject cost;
 	public GameObject panel;
+	public GameObject close;
+	public Button closeButton;
 	
 	private BriefController BC;
 	private Text one;
@@ -30,12 +32,17 @@ public class TaskData : MonoBehaviour {
 		five = NumEmployees.GetComponent<Text>();
 		six = deadline.GetComponent<Text>();
 		GameObject EventSystem = GameObject.Find("EventSystem");
-		BC = EventSystem.GetComponent<BriefController>();				
+		BC = EventSystem.GetComponent<BriefController>();	
+		Button btn = closeButton.GetComponent<Button>();
+        btn.onClick.AddListener(TaskOnClick);		
 	}
-	
+	void TaskOnClick(){
+		Destroy(close);
+	}
 	// Update is called once per frame
 	void Update () {
 		brief = BC.BriefsList[0];
+		print(brief== null);
 		one.text = brief.GetBriefName();
 		two.text= "Project Points: " + brief.GetProjectPoints();
 		three.text = "Project Cost: £" + brief.GetProjectCost();
