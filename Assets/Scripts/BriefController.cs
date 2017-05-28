@@ -12,7 +12,6 @@ public class BriefController : MonoBehaviour {
 	void Start(){
 		AddBrief();
 		AddBrief();
-		briefcomparer = new BriefComparer();
 	}
 	// Update is called once per frame
 	void Update () {

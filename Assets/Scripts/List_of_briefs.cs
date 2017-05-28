@@ -18,7 +18,9 @@ public class List_of_briefs : MonoBehaviour {
 		//RefreshDisplay ();
 		GameObject EventSystem = GameObject.Find("EventSystem");
 		BC = EventSystem.GetComponent<BriefController>();
-	print(contentPanel.position.x);
+		//Vector3
+		float width = contentPanel.rect.width;
+		float height = contentPanel.rect.height;
 
 	}
 	void RefreshDisplay(){
@@ -29,10 +31,11 @@ public class List_of_briefs : MonoBehaviour {
 	}
 	private void AddButtons(){
 		if(onebutton == false){
-			for (int i =0; i< BC.BriefLength ; i++){
+			for (int i =0; i<1; i++){
+				Vector3 pos = 
 				GameObject newButton = Instantiate(button, Vector3.zero, Quaternion.identity);
 
-				newButton.transform.SetParent(contentPanel.transform, false);
+			//	newButton.transform.SetParent(contentPanel.transform, false);
 				GameObject temp = GameObject.Find("Task 1");
 				TaskButtons sampleButton = temp.GetComponent<TaskButtons>();
 				sampleButton.Setup(brief);
