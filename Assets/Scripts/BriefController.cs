@@ -6,6 +6,7 @@ public class BriefController : MonoBehaviour {
 
 	public List<Brief> BriefsList = new List<Brief>();
 	public int BriefLength = 0;
+	public isChanged;
 	//Brief brief;
 	// Use this for initialization
 	void Start(){
@@ -21,12 +22,14 @@ public class BriefController : MonoBehaviour {
 				BriefsList.RemoveAt(i);
 				BriefLength--;
 				i--;
+				isChanged = true;
 			}
 		}
 	}
 	public void AddBrief(){
 		BriefsList.Add(new Brief());
 		BriefLength++;
+		isChanged = true;
 	}
 
 	public void UserUpvote(int currentIndex){
@@ -47,5 +50,6 @@ public class BriefController : MonoBehaviour {
 		Brief temp = BriefsList[from];
 		BriefsList[from] = BriefsList[to];
 		BriefsList[to] = temp;
+		isChanged = true;
 	}
 }
