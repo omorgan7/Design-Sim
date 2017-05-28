@@ -25,16 +25,7 @@ public class TaskData : MonoBehaviour {
 
 	//Use this for initialization
 	void Start () {
-		one = BriefName.GetComponent<Text>();
-		two = ProjectPoints.GetComponent<Text>();
-		three = cost.GetComponent<Text>();
-		four = reward.GetComponent<Text>();
-		five = NumEmployees.GetComponent<Text>();
-		six = deadline.GetComponent<Text>();
-		GameObject EventSystem = GameObject.Find("EventSystem");
-		BC = EventSystem.GetComponent<BriefController>();	
-		Button btn = closeButton.GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);	
+		
 	
 	}
 	void TaskOnClick(){
@@ -51,7 +42,17 @@ public class TaskData : MonoBehaviour {
 		// six.text = "Project Deadline: " + brief.GetProjectDeadline();
 	}
 	public void Setup(Brief brief){
-		print(brief);
+			one = BriefName.GetComponent<Text>();
+		two = ProjectPoints.GetComponent<Text>();
+		three = cost.GetComponent<Text>();
+		four = reward.GetComponent<Text>();
+		five = NumEmployees.GetComponent<Text>();
+		six = deadline.GetComponent<Text>();
+		GameObject EventSystem = GameObject.Find("EventSystem");
+		BC = EventSystem.GetComponent<BriefController>();	
+		Button btn = closeButton.GetComponent<Button>();
+        btn.onClick.AddListener(TaskOnClick);
+		print(one);
 		one.text = brief.GetBriefName();
 		two.text= "Project Points: " + brief.GetProjectPoints();
 		three.text = "Project Cost: £" + brief.GetProjectCost();

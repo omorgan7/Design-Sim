@@ -26,9 +26,10 @@ public class TaskButtons : MonoBehaviour {
 	}
 	public void TaskOnClick(){
     	box = Instantiate(ModalBox,Vector3.zero,Quaternion.identity);
-
+		//RectTransform boxPanel = box.GetComponentInChildren<RectTransform>();
 		//find panel in the children, then do get component on the panel child to get that.
-		TaskData data = box.GetComponent<TaskData>();
+		 GameObject boxPanel= GameObject.Find("BoxPanel");
+		 TaskData data = boxPanel.GetComponent<TaskData>();
 		print(data);
 		data.Setup(brief);
 	}
@@ -44,7 +45,6 @@ public class TaskButtons : MonoBehaviour {
 	}
 	public void Setup(Brief newbrief){
 		brief = newbrief;
-		print(brief == null);
 		txt = btn_text.GetComponent<Text>();
 		txt.text ="  " +  brief.GetBriefName();
 	}
