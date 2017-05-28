@@ -12,6 +12,7 @@ public class List_of_briefs : MonoBehaviour {
 
 	private Brief brief;
 	private BriefController BC;
+	private ArrowController AC;
 	private bool onebutton = false;
 	// Use this for initialization
 	void Start () {
@@ -31,7 +32,8 @@ public class List_of_briefs : MonoBehaviour {
 		if(onebutton == false){
 			for (int i =0; i< BC.BriefLength ; i++){
 				GameObject newButton = Instantiate(button, Vector3.zero, Quaternion.identity);
-
+				ArrowController Arrows = newButton.GetComponent<ArrowController>();
+				Arrows.inputPosition(i);
 				newButton.transform.SetParent(contentPanel.transform, false);
 				GameObject temp = GameObject.Find("Task 1");
 				TaskButtons sampleButton = temp.GetComponent<TaskButtons>();

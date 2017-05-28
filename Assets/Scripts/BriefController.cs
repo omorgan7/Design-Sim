@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BriefController : MonoBehaviour {
 
-	public GameObject BriefGameObject;
 	public List<Brief> BriefsList = new List<Brief>();
 	public int BriefLength = 0;
 	//Brief brief;
@@ -23,26 +22,26 @@ public class BriefController : MonoBehaviour {
 			}
 		}
 	}
-	void AddBrief(){
+	public void AddBrief(){
 		BriefsList.Add(new Brief());
 		BriefLength++;
 	}
 
-	void userUpvote(int currentIndex){
+	public void UserUpvote(int currentIndex){
 		if(currentIndex == 0){
 			return;
 		}
 		swapBriefs(currentIndex, currentIndex);
 
 	}
-	void userDownvote(int currentIndex){
+	public void UserDownvote(int currentIndex){
 		if(currentIndex + 1 == BriefLength){
 			return;
 		}
 		swapBriefs(currentIndex, currentIndex+1);
 	}
 
-	void swapBriefs(int from, int to){
+	private void swapBriefs(int from, int to){
 		Brief temp = BriefsList[from];
 		BriefsList[from] = BriefsList[to];
 		BriefsList[to] = temp;
