@@ -67,28 +67,3 @@ public class Brief : MonoBehaviour {
 	}
 	
 }
-
-public class BriefComparer: IComparer<Brief>{
-	public int Compare(Brief x, Brief y){
-		if(x == null){
-			if(y==null){
-				return 0;
-			}
-			return -1;
-		}
-		else{
-			if(y == null){
-				return 1;
-			}
-		}
-		if(x.priorityFactor > y.priorityFactor){
-			return 1;
-		}
-		else if(x.priorityFactor == y.priorityFactor){
-			return 0;
-		}
-		else{
-			return -1;
-		}
-	}
-}

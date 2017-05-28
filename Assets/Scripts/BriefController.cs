@@ -7,7 +7,6 @@ public class BriefController : MonoBehaviour {
 	public GameObject BriefGameObject;
 	public List<Brief> BriefsList = new List<Brief>();
 	public int BriefLength = 0;
-	BriefComparer briefcomparer;
 	//Brief brief;
 	// Use this for initialization
 	void Start(){
@@ -25,10 +24,29 @@ public class BriefController : MonoBehaviour {
 				i--;
 			}
 		}
-		BriefsList.Sort(briefcomparer);
 	}
 	void AddBrief(){
 		BriefsList.Add(new Brief());
 		BriefLength++;
+	}
+
+	void userUpvote(int currentIndex){
+		if(currentIndex == 0){
+			return;
+		}
+		swapBriefs(currentIndex, currentIndex);
+
+	}
+	void userDownvote(int currentIndex){
+		if(currentIndex + 1 == BriefLength){
+			return;
+		}
+		swapBriefs(currentIndex, currentIndex+1);
+	}
+
+	void swapBriefs(int from, int to){
+		Brief temp = BriefsList[from];
+		BriefsList[from] = BriefsList[to];
+		BriefsList[to] = temp;
 	}
 }
