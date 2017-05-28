@@ -6,7 +6,7 @@ public class BriefController : MonoBehaviour {
 
 	public List<Brief> BriefsList = new List<Brief>();
 	public int BriefLength = 0;
-	public isChanged;
+	public bool isChanged;
 	//Brief brief;
 	// Use this for initialization
 	void Start(){
