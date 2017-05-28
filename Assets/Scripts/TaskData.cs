@@ -34,7 +34,8 @@ public class TaskData : MonoBehaviour {
 		GameObject EventSystem = GameObject.Find("EventSystem");
 		BC = EventSystem.GetComponent<BriefController>();	
 		Button btn = closeButton.GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);		
+        btn.onClick.AddListener(TaskOnClick);	
+	
 	}
 	void TaskOnClick(){
 		Destroy(close);
@@ -45,12 +46,12 @@ public class TaskData : MonoBehaviour {
 		// print(brief== null);
 		// one.text = brief.GetBriefName();
 		// two.text= "Project Points: " + brief.GetProjectPoints();
-		// three.text = "Project Cost: £" + brief.GetProjectCost();
 		// four.text = "Project Reward: £" + brief.GetProjectReward();
 		// five.text = "Number of Employees: " + brief.GetNumEmployees();	
 		// six.text = "Project Deadline: " + brief.GetProjectDeadline();
 	}
 	public void Setup(Brief brief){
+		print(brief);
 		one.text = brief.GetBriefName();
 		two.text= "Project Points: " + brief.GetProjectPoints();
 		three.text = "Project Cost: £" + brief.GetProjectCost();

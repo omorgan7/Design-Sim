@@ -9,13 +9,12 @@ public class List_of_briefs : MonoBehaviour {
   //  public List<Brief> TaskList;
     public RectTransform contentPanel;
 	public GameObject button;
-
-	private Brief brief;
 	private BriefController BC;
 	private ArrowController AC;
 	private bool onebutton = false;
 	private float height;
 	private float width;
+	private TaskData data;
 	private float buttonheight;
 	// Use this for initialization
 	void Start () {
@@ -47,8 +46,9 @@ public class List_of_briefs : MonoBehaviour {
 				newButton.transform.SetParent(contentPanel.transform, false);
 				//GameObject temp = GameObject.Find("Task 1");
 				TaskButtons sampleButton = newButton.GetComponent<TaskButtons>();
-				TaskData data = sampleButton.GetComponent<TaskData>();
-				print(data==null);
+				
+				
+				
 				//Brief B = BC.BriefsList[0];
 				sampleButton.Setup(BC.BriefsList[i]);
 			}
@@ -66,7 +66,7 @@ if(BC.isChanged == true){
 		else{
 			RemoveButtons();
 		}
-		BC.isChanged = false;
+		BC.isChanged = false;	
 }
 		
 	}
