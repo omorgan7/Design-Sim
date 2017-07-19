@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +6,11 @@ public class BriefController : MonoBehaviour {
 
 	public List<Brief> BriefsList = new List<Brief>();
 	public int BriefLength = 0;
+<<<<<<< HEAD
+	public bool isChanged;
+=======
 	public bool isChanged ;
+>>>>>>> 9b57187515fd90912a43697317c943765612320f
 	//Brief brief;
 	// Use this for initialization
 	void Start(){

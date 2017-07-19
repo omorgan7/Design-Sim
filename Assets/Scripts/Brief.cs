@@ -65,5 +65,8 @@ public class Brief{
 	public string GetProjectDeadline(){
 		return deadline.ToString();
 	}
+	public void ChangeName(string name){
+		BriefName = name;
+	}
 	
 }

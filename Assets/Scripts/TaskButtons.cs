@@ -7,6 +7,7 @@ public class TaskButtons : MonoBehaviour {
 	public GameObject ModalBox;
 	public Button yourButton;
 	public GameObject btn_text;
+	
 	private Brief brief;
 
 	private GameObject box;
@@ -24,21 +25,19 @@ public class TaskButtons : MonoBehaviour {
 		
 	}
 	public void TaskOnClick(){
-    	box = Instantiate(ModalBox,Vector3.zero,Quaternion.identity);
+		box = Instantiate(ModalBox,Vector3.zero,Quaternion.identity);
+		GameObject boxPanel= GameObject.Find("BoxPanel");
+		TaskData data = boxPanel.GetComponent<TaskData>();
+		data.Setup(brief);
 	}
 
 	
 	// Update is called once per frame
 	void Update () {
-		// if (BC.BriefLength>0){
-		// 	txt.text =" " + brief.GetBriefName();
-		// }
-
 
 	}
 	public void Setup(Brief newbrief){
 		brief = newbrief;
-		print(brief == null);
 		txt = btn_text.GetComponent<Text>();
 		txt.text ="  " +  brief.GetBriefName();
 	}

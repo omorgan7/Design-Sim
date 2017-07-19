@@ -25,6 +25,16 @@ public class TaskData : MonoBehaviour {
 
 	//Use this for initialization
 	void Start () {
+		
+	
+	}
+	void TaskOnClick(){
+		Destroy(close);
+	}
+	// Update is called once per frame
+	void Update () {
+	}
+	public void Setup(Brief brief){
 		one = BriefName.GetComponent<Text>();
 		two = ProjectPoints.GetComponent<Text>();
 		three = cost.GetComponent<Text>();
@@ -34,15 +44,7 @@ public class TaskData : MonoBehaviour {
 		GameObject EventSystem = GameObject.Find("EventSystem");
 		BC = EventSystem.GetComponent<BriefController>();	
 		Button btn = closeButton.GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);		
-	}
-	void TaskOnClick(){
-		Destroy(close);
-	}
-	// Update is called once per frame
-	void Update () {
-		brief = BC.BriefsList[0];
-		print(brief== null);
+        btn.onClick.AddListener(TaskOnClick);
 		one.text = brief.GetBriefName();
 		two.text= "Project Points: " + brief.GetProjectPoints();
 		three.text = "Project Cost: £" + brief.GetProjectCost();
