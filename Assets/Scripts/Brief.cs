@@ -6,8 +6,9 @@ public class Brief{
 
 	private string BriefName ;
 	private float ProjectPoints;
+	public EmployeeController employeecontroller;
 	List<Employee> assignedEmployees = new List<Employee>();
-	public int NumEmployees = 5;
+	public int NumEmployees = 0;
 	public float Cost;
 	public float time;
 	public float reward;
@@ -16,14 +17,23 @@ public class Brief{
 	public float priorityFactor;
 
 	// Use this for initialization
-	public Brief() {
+	public Brief(int NumEmployees, EmployeeController employeecontroller) {
+		this.employeecontroller = employeecontroller;
 		BriefName = "Test Project";
 		ProjectPoints = 10f;
 		Cost = 50f;
 		reward = 100f;
-		for(int i = 0; i<NumEmployees; i++){
-			assignedEmployees.Add(new Employee());
+		int i =0;
+		int j =0;
+		while(i < NumEmployees && j<employeecontroller.EmployeeList.Count){
+			if(employeecontroller.EmployeeList[j].isBusy == false){
+				assignedEmployees.Add(employeecontroller.EmployeeList[j]);
+				employeecontroller.EmployeeList[j].isBusy = true;
+				++i;
+			}
+			++j;
 		}
+		this.NumEmployees = i;
 	}
 
 	public float RemainingProjectPoints(){
@@ -32,7 +42,7 @@ public class Brief{
 
 	public void PerformProgress(){
 		for(int i = 0; i<NumEmployees; i++){
-			ProjectPoints -= assignedEmployees[i].ProjectPointsRate *Time.deltaTime;
+			ProjectPoints -= assignedEmployees[i].GetProjectPointsRate() *Time.deltaTime;
 		}
 		elapsedTime += Time.deltaTime;
 		priorityFactor = 1.0f/(deadline - elapsedTime);
@@ -43,6 +53,7 @@ public class Brief{
 		NumEmployees++;
 	}
 	public void RemoveEmployee(int EmployeeIndex){
+		assignedEmployees[EmployeeIndex].isBusy = false;
 		assignedEmployees.RemoveAt(EmployeeIndex);
 		NumEmployees--;
 	}

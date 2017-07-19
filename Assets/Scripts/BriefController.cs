@@ -5,13 +5,15 @@ using UnityEngine;
 public class BriefController : MonoBehaviour {
 
 	public List<Brief> BriefsList = new List<Brief>();
+	public EmployeeController ec;
 	public int BriefLength = 0;
 	public bool isChanged ;
 	//Brief brief;
 	// Use this for initialization
 	void Start(){
-		AddBrief();
-		AddBrief();
+		AddBrief(3); //3 employees
+		AddBrief(2);
+		AddBrief(16);
 		BriefsList[1].ChangeName("test new name");
 	}
 	// Update is called once per frame
@@ -26,8 +28,8 @@ public class BriefController : MonoBehaviour {
 			}
 		}
 	}
-	public void AddBrief(){
-		BriefsList.Add(new Brief());
+	public void AddBrief(int NumEmployees){
+		BriefsList.Add(new Brief(NumEmployees,ec));
 		BriefLength++;
 		isChanged = true;
 	}
@@ -36,8 +38,8 @@ public class BriefController : MonoBehaviour {
 		if(currentIndex == 0){
 			return;
 		}
-		swapBriefs(currentIndex, currentIndex);
-
+		print("Upvote");
+		swapBriefs(currentIndex, currentIndex-1);
 	}
 	public void UserDownvote(int currentIndex){
 		if(currentIndex + 1 == BriefLength){
