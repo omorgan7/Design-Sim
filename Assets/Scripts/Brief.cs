@@ -5,7 +5,7 @@ using UnityEngine;
 public class Brief{
 
 	private string BriefName ;
-	private float ProjectPoints;
+	private float ProjectPoints, InitialProjectPoints;
 	public EmployeeController employeecontroller;
 	List<Employee> assignedEmployees = new List<Employee>();
 	public int NumEmployees = 0;
@@ -17,23 +17,25 @@ public class Brief{
 	public float priorityFactor;
 
 	// Use this for initialization
-	public Brief(int NumEmployees, EmployeeController employeecontroller) {
-		this.employeecontroller = employeecontroller;
+	public Brief(int _NumEmployees, EmployeeController _employeecontroller) {
+		employeecontroller = _employeecontroller;
 		BriefName = "Test Project";
 		ProjectPoints = 10f;
+		InitialProjectPoints = ProjectPoints;
 		Cost = 50f;
 		reward = 100f;
 		int i =0;
 		int j =0;
-		while(i < NumEmployees && j<employeecontroller.EmployeeList.Count){
+		while(i < _NumEmployees && j <employeecontroller.EmployeeList.Count){
 			if(employeecontroller.EmployeeList[j].isBusy == false){
 				assignedEmployees.Add(employeecontroller.EmployeeList[j]);
 				employeecontroller.EmployeeList[j].isBusy = true;
 				++i;
 			}
+
 			++j;
 		}
-		this.NumEmployees = i;
+		NumEmployees = i;
 	}
 
 	public float RemainingProjectPoints(){
@@ -46,6 +48,10 @@ public class Brief{
 		}
 		elapsedTime += Time.deltaTime;
 		priorityFactor = 1.0f/(deadline - elapsedTime);
+	}
+
+	public float PercentageDone(){
+		return ProjectPoints/InitialProjectPoints;
 	}
 
 	public void AddEmployee(){

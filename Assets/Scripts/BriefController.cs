@@ -7,15 +7,19 @@ public class BriefController : MonoBehaviour {
 	public List<Brief> BriefsList = new List<Brief>();
 	public EmployeeController ec;
 	public int BriefLength = 0;
-	public bool isChanged ;
+	public bool isChanged;
 	//Brief brief;
 	// Use this for initialization
 	void Start(){
-		AddBrief(3); //3 employees
-		AddBrief(2);
-		AddBrief(16);
-		BriefsList[1].ChangeName("test new name");
+		StartCoroutine(DelayedStart());
 	}
+
+	IEnumerator DelayedStart(){
+		while(ec.isSpawned == false){
+			yield return null;
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
 		for(int i =0; i<BriefLength; i++){
@@ -38,7 +42,6 @@ public class BriefController : MonoBehaviour {
 		if(currentIndex == 0){
 			return;
 		}
-		print("Upvote");
 		swapBriefs(currentIndex, currentIndex-1);
 	}
 	public void UserDownvote(int currentIndex){

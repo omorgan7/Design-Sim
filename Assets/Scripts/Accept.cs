@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Accept : MonoBehaviour {
-	public GameObject parent;
-	public Button yourButton;
+
+	private Button yourButton;
 
     void Start(){
-        Button btn = yourButton.GetComponent<Button>();
+        Button btn = gameObject.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
     }
 	// Update is called once per frame
 	void TaskOnClick(){
-		Destroy(parent);
+		Destroy(transform.parent.gameObject);
 	}
 }
