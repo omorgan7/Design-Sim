@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 114274656734845822}
   - component: {fileID: 114787473031132274}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: BoxPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -555,6 +555,8 @@ MonoBehaviour:
   deadline: {fileID: 1057732874888650}
   cost: {fileID: 1011659920195282}
   panel: {fileID: 1520202752200262}
+  close: {fileID: 1180273614398336}
+  closeButton: {fileID: 114163719983475172}
 --- !u!114 &114929197987343830
 MonoBehaviour:
   m_ObjectHideFlags: 1

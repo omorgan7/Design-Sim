@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Brief : MonoBehaviour {
+public class Brief{
 
 	private string BriefName ;
-	private float ProjectPoints;
+	private float ProjectPoints, InitialProjectPoints;
+	public EmployeeController employeecontroller;
 	List<Employee> assignedEmployees = new List<Employee>();
-	public int NumEmployees = 5;
+	public int NumEmployees = 0;
 	public float Cost;
 	public float time;
 	public float reward;
@@ -16,14 +17,25 @@ public class Brief : MonoBehaviour {
 	public float priorityFactor;
 
 	// Use this for initialization
-	public Brief() {
+	public Brief(int _NumEmployees, EmployeeController _employeecontroller) {
+		employeecontroller = _employeecontroller;
 		BriefName = "Test Project";
 		ProjectPoints = 10f;
+		InitialProjectPoints = ProjectPoints;
 		Cost = 50f;
 		reward = 100f;
-		for(int i = 0; i<NumEmployees; i++){
-			assignedEmployees.Add(new Employee());
+		int i =0;
+		int j =0;
+		while(i < _NumEmployees && j <employeecontroller.EmployeeList.Count){
+			if(employeecontroller.EmployeeList[j].isBusy == false){
+				assignedEmployees.Add(employeecontroller.EmployeeList[j]);
+				employeecontroller.EmployeeList[j].isBusy = true;
+				++i;
+			}
+
+			++j;
 		}
+		NumEmployees = i;
 	}
 
 	public float RemainingProjectPoints(){
@@ -32,10 +44,14 @@ public class Brief : MonoBehaviour {
 
 	public void PerformProgress(){
 		for(int i = 0; i<NumEmployees; i++){
-			ProjectPoints -= assignedEmployees[i].ProjectPointsRate *Time.deltaTime;
+			ProjectPoints -= assignedEmployees[i].GetProjectPointsRate() *Time.deltaTime;
 		}
 		elapsedTime += Time.deltaTime;
 		priorityFactor = 1.0f/(deadline - elapsedTime);
+	}
+
+	public float PercentageDone(){
+		return ProjectPoints/InitialProjectPoints;
 	}
 
 	public void AddEmployee(){
@@ -43,6 +59,7 @@ public class Brief : MonoBehaviour {
 		NumEmployees++;
 	}
 	public void RemoveEmployee(int EmployeeIndex){
+		assignedEmployees[EmployeeIndex].isBusy = false;
 		assignedEmployees.RemoveAt(EmployeeIndex);
 		NumEmployees--;
 	}
@@ -65,30 +82,8 @@ public class Brief : MonoBehaviour {
 	public string GetProjectDeadline(){
 		return deadline.ToString();
 	}
-	
-}
-
-public class BriefComparer: IComparer<Brief>{
-	public int Compare(Brief x, Brief y){
-		if(x == null){
-			if(y==null){
-				return 0;
-			}
-			return -1;
-		}
-		else{
-			if(y == null){
-				return 1;
-			}
-		}
-		if(x.priorityFactor > y.priorityFactor){
-			return 1;
-		}
-		else if(x.priorityFactor == y.priorityFactor){
-			return 0;
-		}
-		else{
-			return -1;
-		}
+	public void ChangeName(string name){
+		BriefName = name;
 	}
+	
 }
