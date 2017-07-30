@@ -1,14 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Linq;
 
 //C# contains a sortedset which doesn't allow you to insert elements that are the same as one another.
-//it also contains a sortedlist, which is *really* more like a sorted hashtable.
+//it also contains a mySortedList, which is *really* more like a sorted hashtable.
 //this should be simple enough for our purposes.
 
-public class SortedList<T> {
+public class mySortedList<T> {
     Comparison<T> comparison;
 
     private List<T> data = new List<T>();
 
-    public SortedList<T> (Comparison<T> _comparison){
+    public mySortedList<T> (Comparison<T> _comparison){
         comparison = _comparison;
     }
 

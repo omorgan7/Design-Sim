@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WorkChunk{
-    float currenttime = 0f;
-    float duration;
+    public float currenttime = 0f;
+    public float duration;
     public Brief brief;
 
     public WorkChunk(float _duration, Brief _brief){

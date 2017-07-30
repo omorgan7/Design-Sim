@@ -9,7 +9,7 @@ public class Employee{
 	enum Seniority {Junior=1, Mid=3, Senior=5,Director=10};
 	Seniority rank = Seniority.Junior;
 
-	public SortedSet<WorkChunk> WorkQueue = new SortedSet <WorkChunk>(new CompareBriefPriority());
+	public SortedList<WorkChunk> WorkQueue = new SortedList <WorkChunk>(new CompareBriefPriority());
 
 	private float BaseProjectPointsRate = 0.1f;
 	public bool isBusy = false;
@@ -30,10 +30,15 @@ public class Employee{
 	}
 
 	public void UpdatePriorityQueue(Brief a, Brief b){
-		// WorkQueue.Remove(a); //might fail later;
-		// WorkQueue.Remove(b);
-		// WorkQueue.Add(a);
-		// WorkQueue.Add(b);		
+		int index;
+		index = WorkQueue.data.FindIndex(x => x == a);
+		float durationa = WorkQueue.data[index].duration - WorkQueue.data[index].currenttime;
+		WorkQueue.data.Remove(index); //might fail later;
+		index = WorkQueue.data.FindIndex(x => x == b);
+		float durationb = WorkQueue.data[index].duration - WorkQueue.data[index].currenttime;
+		WorkQueue.Remove(index);
+		WorkQueue.Add(a, durationa);
+		WorkQueue.Add(b, durationb);		
 	}
 	public void Update(float TimeFromLastUpdate){
 		float ProjectPointsCompleted = TimeFromLastUpdate*GetProjectPointsRate();
