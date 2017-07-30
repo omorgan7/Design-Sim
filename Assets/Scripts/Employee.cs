@@ -22,27 +22,32 @@ public class Employee{
 		return Mathf.Pow(2, (float) rank);
 	}
 
-
-
 	public void AddWork(Brief b, float duration){
-		WorkQueue.Add(new Pairing(b,duration));
+		WorkQueue.Add(new Pairing(b, duration));
 	}
 	public void RemoveCompletedWork(){
 		WorkQueue.Remove(WorkQueue.First());
 	}
 
 	public void UpdatePriorityQueue(Pairing a, Pairing b){
-		WorkQueue.Remove(a);
+		WorkQueue.Remove(a); //might fail later;
 		WorkQueue.Remove(b);
 		WorkQueue.Add(a);
 		WorkQueue.Add(b);		
+	}
+	public void Update(float TimeFromLastUpdate){
+		float ProjectPointsCompleted = TimeFromLastUpdate*GetProjectPointsRate();
+		WorkQueue.First().brief.PerformProgress(ProjectPointsCompleted); 
+		if(WorkQueue.First().brief.RemainingProjectPoints()<=0.0f){
+			RemoveCompletedWork();
+		}
 	}
 
 }
 
 public struct Pairing{
-	 public Brief brief;
-	float duration;
+	public Brief brief;
+	float duration; //is this needed?
 	public Pairing(Brief _b, float _duration){
 		brief = _b;
 		duration = _duration;
@@ -51,6 +56,6 @@ public struct Pairing{
 
 public class CompareBriefPriority:Comparer<Pairing>{
 	public override int Compare(Pairing a, Pairing b){ 
-		return System.Convert.ToInt32(a.brief.priorityFactor > b.brief.priorityFactor); 
+		return System.Convert.ToInt32(a.brief.priorityFactor > b.brief.priorityFactor); //is this correct way round?
 	}
 }

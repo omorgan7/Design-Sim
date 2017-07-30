@@ -50,6 +50,6 @@ public class TaskData : MonoBehaviour {
 		three.text = "Project Cost: £" + brief.GetProjectCost();
 		four.text = "Project Reward: £" + brief.GetProjectReward();
 		five.text = "Number of Employees: " + brief.GetNumEmployees();	
-		six.text = "Project Deadline: " + brief.GetProjectDeadline();
+		six.text = "Project Deadline: " + brief.GetProjectdeadline();
 	}
 }

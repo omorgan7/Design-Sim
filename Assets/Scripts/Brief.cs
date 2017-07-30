@@ -8,7 +8,7 @@ public class Brief{
 	private string BriefName ;
 	private float ProjectPoints, InitialProjectPoints;
 	public EmployeeController employeecontroller;
-	List<Employee> assignedEmployees = new List<Employee>();
+	public List<Employee> assignedEmployees = new List<Employee>();
 	public int NumEmployees = 0;
 	public float Cost;
 	public float time;
@@ -90,7 +90,7 @@ public class Brief{
 	public string GetProjectReward(){
 		return reward.ToString();
 	}
-	public string GetProjectDeadline(){
+	public string GetProjectdeadline(){
 		return deadline.ToString();
 	}
 	public void ChangeName(string name){

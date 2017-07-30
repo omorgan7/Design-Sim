@@ -22,10 +22,17 @@ public class EmployeeController : MonoBehaviour {
 			EmployeeList.ElementAt(i).AddWork(b,duration);
 		}
 	}
+	
+	void Update(){
+		for(int i=0; i<NumEmployees; ++i){
+			EmployeeList.ElementAt(i).Update(Time.deltaTime);
+		}
+	}
 }
 
 public class ByQueueLength : Comparer<Employee>{
 	public override int Compare(Employee a, Employee b){
-		return System.Convert.ToInt32(a.workqueue.Count < b.workqueue.Count);
+		return System.Convert.ToInt32(a.WorkQueue.Count < b.WorkQueue.Count);
 	}
 }
+
