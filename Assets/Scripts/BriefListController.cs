@@ -22,6 +22,7 @@ public class BriefListController : MonoBehaviour {
 		width = contentPanel.rect.width;
 		height = contentPanel.rect.height;
 		buttonheight = button.GetComponent<RectTransform> ().rect.height;
+	
 	}
 	void RefreshDisplay(){
 	

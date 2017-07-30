@@ -34,6 +34,12 @@ public class EmployeeController : MonoBehaviour {
 		}
 		bc.AddBrief(b);
 	}
+	
+	void Update(){
+		for(int i=0; i<NumEmployees; ++i){
+			EmployeeList.ElementAt(i).Update(Time.deltaTime);
+		}
+	}
 }
 
 public class ByQueueLength : Comparer<Employee>{
@@ -41,3 +47,4 @@ public class ByQueueLength : Comparer<Employee>{
 		return System.Convert.ToInt32(a.WorkQueue.Count < b.WorkQueue.Count);
 	}
 }
+

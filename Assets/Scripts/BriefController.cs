@@ -23,7 +23,6 @@ public class BriefController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		for(int i =0; i<BriefLength; i++){
-			BriefsList[i].PerformProgress();
 			if(BriefsList[i].RemainingProjectPoints() <= 0.0f){
 				BriefsList.RemoveAt(i);
 				BriefLength--;
@@ -62,5 +61,12 @@ public class BriefController : MonoBehaviour {
 		BriefsList[from] = BriefsList[to];
 		BriefsList[to] = temp;
 		isChanged = true;
+
+		for (int i=0; i<temp.NumEmployees; ++i){
+			temp.assignedEmployees[i].UpdatePriorityQueue(temp,BriefsList[from]);
+		}
+		for (int i=0; i<BriefsList[from].NumEmployees; ++i){
+			BriefsList[from].assignedEmployees[i].UpdatePriorityQueue(temp,BriefsList[from]);
+		}
 	}
 }

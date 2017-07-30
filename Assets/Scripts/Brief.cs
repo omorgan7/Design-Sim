@@ -97,7 +97,7 @@ public class Brief{
 	public string GetProjectReward(){
 		return reward.ToString();
 	}
-	public string GetProjectDeadline(){
+	public string GetProjectdeadline(){
 		return deadline.ToString();
 	}
 	public void ChangeName(string name){

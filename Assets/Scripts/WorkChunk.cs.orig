@@ -12,6 +12,10 @@ public class WorkChunk{
         duration = _duration;
     }
 
+<<<<<<< HEAD
+
+}
+=======
     public static bool operator ==(WorkChunk w, Brief b){
         return (w.brief == b);
     }
@@ -25,3 +29,4 @@ public class WorkChunk{
 }
 
 //	print(W.FindIndex(x => x==b2)); //FIND MATCHING BRIEF IN LIST
+>>>>>>> 3ecac5593b1d16bb194baef3d882f6e6c7cb4a40
