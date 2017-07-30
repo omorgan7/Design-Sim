@@ -39,7 +39,7 @@ public class Brief{
 		return ProjectPoints;
 	}
 
-	public void PerformProgress(){
+	public void PerformProgress(){ 
 		for(int i = 0; i<NumEmployees; i++){
 			ProjectPoints -= assignedEmployees[i].GetProjectPointsRate() *Time.deltaTime;
 		}

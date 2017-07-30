@@ -15,7 +15,7 @@ public class Employee{
 	enum Seniority {Junior=1, Mid=3, Senior=5,Director=10};
 	Seniority rank = Seniority.Junior;
 
-	public SortedList<WorkChunk> WorkQueue = new SortedList <WorkChunk>(new CompareBriefPriority());
+	public LiteSortedList<WorkChunk> WorkQueue = new LiteSortedList <WorkChunk>(new CompareBriefPriority());
 
 	private float BaseProjectPointsRate = 0.1f;
 	public bool isBusy = false;
@@ -32,28 +32,36 @@ public class Employee{
 		WorkQueue.Add(new WorkChunk(duration, b));
 	}
 	public void RemoveCompletedWork(){
-		WorkQueue.Remove(WorkQueue.First());
+		WorkQueue.RemoveAt(0);
 	}
+
 
 	public void UpdatePriorityQueue(Brief a, Brief b){
 		int index;
 		index = WorkQueue.data.FindIndex(x => x == a);
 		float durationa = WorkQueue.data[index].duration - WorkQueue.data[index].currenttime;
-		WorkQueue.data.Remove(index); //might fail later;
+		WorkQueue.RemoveAt(index); //might fail later;
 		index = WorkQueue.data.FindIndex(x => x == b);
 		float durationb = WorkQueue.data[index].duration - WorkQueue.data[index].currenttime;
-		WorkQueue.Remove(index);
-		WorkQueue.Add(a, durationa);
-		WorkQueue.Add(b, durationb);		
+		WorkQueue.RemoveAt(index);
+		AddWork(a, durationa);
+		AddWork(b, durationb);		
 	}
 	public void Update(float TimeFromLastUpdate){
 		float ProjectPointsCompleted = TimeFromLastUpdate*GetProjectPointsRate();
-		WorkQueue.First().brief.PerformProgress(ProjectPointsCompleted); 
-		if(WorkQueue.First().brief.RemainingProjectPoints()<=0.0f){
+		WorkQueue.data[0].brief.PerformProgress(ProjectPointsCompleted); 
+		if(WorkQueue.data[0].brief.RemainingProjectPoints()<=0.0f){
+			RemoveCompletedWork();
+		}
+		float TimeSpent = TimeFromLastUpdate;
+		UpdateBriefTime(TimeSpent);
+		if(WorkQueue.data[0].currenttime>=WorkQueue.data[0].duration){
 			RemoveCompletedWork();
 		}
 	}
-
+	public void UpdateBriefTime(float TimeSpent){
+		WorkQueue.data[0].currenttime += TimeSpent;
+	}
 }
 
 public class CompareBriefPriority:Comparer<WorkChunk>{

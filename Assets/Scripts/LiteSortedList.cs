@@ -9,7 +9,7 @@ using System.Collections.Generic;
 public class LiteSortedList<T> {
     IComparer<T> comparison;
 
-    private List<T> data = new List<T>();
+    public List<T> data = new List<T>();
 
     public LiteSortedList(IComparer<T> _comparison){
         comparison = _comparison;
