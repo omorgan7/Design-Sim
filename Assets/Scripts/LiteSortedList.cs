@@ -14,6 +14,10 @@ public class LiteSortedList<T> {
         comparison = _comparison;
     }
 
+    public LiteSortedList(){
+        comparison = Comparer<T>.Default;
+    }
+
     //Adding an item will take O(logN) time due to binary search.
     //This saves us performing a resort.
     public void Add(T item){
@@ -29,11 +33,17 @@ public class LiteSortedList<T> {
         if(range == 0){
             return 0;
         }
+        bool greaterthanstart = comparison.Compare(item, data[start]) > 0;
         if(range == 1){
-            return start + comparison.Compare(item,data[start]);
+            return start + Convert.ToInt32(greaterthanstart);
         }
-        if(comparison.Compare(item,data[end]) > 0){
+        bool greaterthanend = comparison.Compare(item, data[end - 1]) > 0;
+        if(greaterthanend){
             return end;
+        }
+        bool greaterthanmiddle = comparison.Compare(item, data[start + range / 2]) > 0;
+        if (greaterthanmiddle){
+            return BinarySearch(item, start + range / 2, end);
         }
         return BinarySearch(item,start,start + range/2);
     }
@@ -54,17 +64,19 @@ public class LiteSortedList<T> {
     }
 
     public T this[int index]{
-        get {
+        get{
             return data[index];
         }
-        set {
+        set{
             RemoveAt(index);
             Add(value);
         }
     }
 
     public int Count{
-        get {return data.Count;}
+        get{
+            return data.Count;
+        }
     }
 
 }
