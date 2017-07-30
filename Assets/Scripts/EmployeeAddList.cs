@@ -51,6 +51,15 @@ public class EmployeeAddList : MonoBehaviour {
 		if(idx < 0){
 			return;
 		}
+		print(idx);
+		
+		float[] durations = new float[idx+1];
+		int count = 0;
+		foreach(var ev in EmployeeViews){
+			durations[count] = (float) ev.GetComponentInChildren<Incrementor>().ReturnNum();
+			++count;
+		}
+		ec.AddWork(new Brief(),idx+1,durations);
 		bc.AddBrief(idx+1);
 		Destroy(gameObject);
 	}

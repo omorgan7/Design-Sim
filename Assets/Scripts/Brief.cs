@@ -8,7 +8,7 @@ public class Brief{
 	private string BriefName ;
 	private float ProjectPoints, InitialProjectPoints;
 	public EmployeeController employeecontroller;
-	List<Employee> assignedEmployees = new List<Employee>();
+	public List<Employee> assignedEmployees = new List<Employee>();
 	public int NumEmployees = 0;
 	public float Cost;
 	public float time;
@@ -25,18 +25,14 @@ public class Brief{
 		InitialProjectPoints = ProjectPoints;
 		Cost = 50f;
 		reward = 100f;
-		int i =0;
-		int j =0;
-		while(i < _NumEmployees && j <employeecontroller.EmployeeList.Count){
-			if(employeecontroller.EmployeeList.ElementAt(j).isBusy == false){
-				assignedEmployees.Add(employeecontroller.EmployeeList.ElementAt(j));
-				employeecontroller.EmployeeList.ElementAt(j).isBusy = true;
-				++i;
-			}
+	}
 
-			++j;
-		}
-		NumEmployees = i;
+	public Brief(){
+		BriefName = "Test Project2";
+		ProjectPoints = 10f;
+		InitialProjectPoints = ProjectPoints;
+		Cost = 50f;
+		reward = 100f;
 	}
 
 	public float RemainingProjectPoints(){
@@ -69,10 +65,21 @@ public class Brief{
 		assignedEmployees.Add(new Employee());
 		NumEmployees++;
 	}
+
+	public void AddEmployee(Employee e){
+		assignedEmployees.Add(e);
+		++NumEmployees;
+	}
+	
 	public void RemoveEmployee(int EmployeeIndex){
 		assignedEmployees[EmployeeIndex].isBusy = false;
 		assignedEmployees.RemoveAt(EmployeeIndex);
 		NumEmployees--;
+	}
+
+	public void RemoveEmployee(Employee e){
+		assignedEmployees.Remove(e);
+		--NumEmployees;
 	}
 
 	public string GetBriefName(){

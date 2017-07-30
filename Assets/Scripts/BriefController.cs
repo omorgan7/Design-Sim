@@ -38,6 +38,12 @@ public class BriefController : MonoBehaviour {
 		isChanged = true;
 	}
 
+	public void AddBrief(Brief b){
+		BriefsList.Add(b);
+		++BriefLength;
+		isChanged = true;
+	}
+
 	public void UserUpvote(int currentIndex){
 		if(currentIndex == 0){
 			return;

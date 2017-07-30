@@ -4,7 +4,13 @@ using UnityEngine;
 using System.Linq;
 
 public class Employee{
+	public int id = 0;
+
 	public Employee(){}
+
+	public Employee(int _id){
+		id = _id;
+	}
 
 	enum Seniority {Junior=1, Mid=3, Senior=5,Director=10};
 	Seniority rank = Seniority.Junior;
