@@ -5,12 +5,23 @@ using UnityEngine;
 public class WorkChunk{
     float currenttime = 0f;
     float duration;
-    public Brief b;
+    public Brief brief;
 
-    WorkChunk(float _duration, Brief _b){
-        b = _b;
+    public WorkChunk(float _duration, Brief _brief){
+        brief = _brief;
         duration = _duration;
     }
 
-    
+    public static bool operator ==(WorkChunk w, Brief b){
+        return (w.brief == b);
+    }
+    public static bool operator !=(WorkChunk w, Brief b){
+        return (w.brief != b);
+    }
+        public static bool equals(WorkChunk w, Brief b){
+        return (w.brief == b);
+    }
+
 }
+
+//	print(W.FindIndex(x => x==b2)); //FIND MATCHING BRIEF IN LIST

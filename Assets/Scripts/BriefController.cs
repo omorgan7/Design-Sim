@@ -56,14 +56,11 @@ public class BriefController : MonoBehaviour {
 		BriefsList[to] = temp;
 		isChanged = true;
 
-		Pairing a = new Pairing(temp, );//change this
-		Pairing b = new Pairing(BriefsList[from], );
-
 		for (int i=0; i<temp.NumEmployees; ++i){
-			temp.assignedEmployees[i].UpdatePriorityQueue(a,b);
+			temp.assignedEmployees[i].UpdatePriorityQueue(temp,BriefsList[from]);
 		}
 		for (int i=0; i<BriefsList[from].NumEmployees; ++i){
-			BriefsList[from].assignedEmployees[i].UpdatePriorityQueue(a,b);
+			BriefsList[from].assignedEmployees[i].UpdatePriorityQueue(temp,BriefsList[from]);
 		}
 	}
 }
