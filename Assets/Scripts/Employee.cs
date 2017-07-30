@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Employee{
 	public Employee(){}
@@ -8,7 +9,7 @@ public class Employee{
 	enum Seniority {Junior=1, Mid=3, Senior=5,Director=10};
 	Seniority rank = Seniority.Junior;
 
-	public Queue workqueue = new Queue();
+	public SortedSet<Pairing> WorkQueue = new SortedSet <Pairing>(new CompareBriefPriority());
 
 	private float BaseProjectPointsRate = 0.1f;
 	public bool isBusy = false;
@@ -21,17 +22,35 @@ public class Employee{
 		return Mathf.Pow(2,(float) rank);
 	}
 
-	public void AddWork(Brief b,float duration){
-		workqueue.Enqueue(new Pairing(b,duration));
+
+
+	public void AddWork(Brief b, float duration){
+		WorkQueue.Add(new Pairing(b,duration));
+	}
+	public void RemoveCompletedWork(){
+		WorkQueue.Remove(WorkQueue.First());
+	}
+
+	public void UpdatePriorityQueue(Pairing a, Pairing b){
+		WorkQueue.Remove(a);
+		WorkQueue.Remove(b);
+		WorkQueue.Add(a);
+		WorkQueue.Add(b);		
 	}
 
 }
 
-struct Pairing{
-	Brief b;
+public struct Pairing{
+	 public Brief brief;
 	float duration;
 	public Pairing(Brief _b, float _duration){
-		b = _b;
+		brief = _b;
 		duration = _duration;
+	}
+}
+
+public class CompareBriefPriority:Comparer<Pairing>{
+	public override int Compare(Pairing a, Pairing b){ 
+		return System.Convert.ToInt32(a.brief.priorityFactor > b.brief.priorityFactor); 
 	}
 }
