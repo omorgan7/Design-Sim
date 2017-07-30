@@ -1,14 +1,16 @@
+using System;
+using System.Collections.Generic;
 
 //C# contains a sortedset which doesn't allow you to insert elements that are the same as one another.
 //it also contains a sortedlist, which is *really* more like a sorted hashtable.
 //this should be simple enough for our purposes.
 
-public class SortedList<T> {
-    Comparison<T> comparison;
+public class LiteSortedList<T> {
+    IComparer<T> comparison;
 
     private List<T> data = new List<T>();
 
-    public SortedList<T> (Comparison<T> _comparison){
+    public LiteSortedList(IComparer<T> _comparison){
         comparison = _comparison;
     }
 
@@ -48,11 +50,13 @@ public class SortedList<T> {
     }
 
     public void Remove(T item){
-        data.Remove(T);
+        data.Remove(item);
     }
 
     public T this[int index]{
-        get {return data[index];}
+        get {
+            return data[index];
+        }
         set {
             RemoveAt(index);
             Add(value);
