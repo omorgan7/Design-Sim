@@ -462,7 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e617aaf78814bb9b1328ec487eba58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnChanceInitial: 0.5
+  spawnChanceInitial: 0.0001
   chanceIncrease: 0.0001
   ModalBox: {fileID: 1702113813488932, guid: 143daf5d437b34d7c992db9a3f919d87, type: 2}
 --- !u!114 &758550465

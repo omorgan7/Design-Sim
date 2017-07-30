@@ -13,18 +13,23 @@ public class EmployeeAddList : MonoBehaviour {
 	private int idx = -1;
 	private RectTransform reference;
 	private BriefController bc;
+	private EmployeeController ec;
 
 	void Start(){
 		reference = EmployeeViewPrefab.GetComponent<RectTransform>();
 		GameObject eventsystem = GameObject.Find("EventSystem");
 		bc = eventsystem.GetComponent<BriefController>();
+		ec = eventsystem.GetComponent<EmployeeController>();
 	}
 
 	public void AddEmployee(){
-		EmployeeViews.Add(Instantiate<GameObject>(EmployeeViewPrefab));
-		++idx;
-		SetTransform();
+		if(idx + 1 < ec.NumEmployees){
+			EmployeeViews.Add(Instantiate<GameObject>(EmployeeViewPrefab));
+			++idx;
+			SetTransform();
+		}
 	}
+	
 	public void RemoveEmployee(){
 		if(idx < 0){
 			return;
@@ -33,6 +38,7 @@ public class EmployeeAddList : MonoBehaviour {
 		EmployeeViews.RemoveAt(idx);
 		--idx;
 	}
+
 	void SetTransform(){
 		RectTransform rt = EmployeeViews[idx].GetComponent<RectTransform>();
 		rt.SetParent(ScrollViewContent.transform,false);
@@ -45,7 +51,7 @@ public class EmployeeAddList : MonoBehaviour {
 		if(idx < 0){
 			return;
 		}
-		bc.AddBrief(idx);
+		bc.AddBrief(idx+1);
 		Destroy(gameObject);
 	}
 

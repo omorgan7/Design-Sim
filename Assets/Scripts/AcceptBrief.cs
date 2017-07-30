@@ -15,6 +15,6 @@ public class AcceptBrief : MonoBehaviour {
 	// Update is called once per frame
 	void TaskOnClick(){
 		Instantiate(prefab);
-		Destroy(transform.parent.gameObject);
+		Destroy(transform.parent.gameObject.transform.parent.gameObject);
 	}
 }
