@@ -8,7 +8,7 @@ public class Employee{
 	enum Seniority {Junior=1, Mid=3, Senior=5,Director=10};
 	Seniority rank = Seniority.Junior;
 
-	public Queue workqueue = new Queue();
+	public SortedSet<Pairing> workqueue = new SortedSet <Pairing>(CompareBriefPriority()<Brief>);
 
 	private float BaseProjectPointsRate = 0.1f;
 	public bool isBusy = false;
@@ -21,8 +21,11 @@ public class Employee{
 		return Mathf.Pow(2,(float) rank);
 	}
 
-	public void AddWork(Brief b,float duration){
+	public void AddWork(Brief b, float duration){
 		workqueue.Enqueue(new Pairing(b,duration));
+	}
+	public void RemoveWork(){
+		workqueue.Dequeue();
 	}
 
 }
