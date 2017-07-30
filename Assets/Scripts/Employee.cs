@@ -19,7 +19,7 @@ public class Employee{
 	}
 
 	public float GetCost(){
-		return Mathf.Pow(2,(float) rank);
+		return Mathf.Pow(2, (float) rank);
 	}
 
 

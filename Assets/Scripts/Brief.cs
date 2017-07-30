@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Brief{
@@ -27,9 +28,9 @@ public class Brief{
 		int i =0;
 		int j =0;
 		while(i < _NumEmployees && j <employeecontroller.EmployeeList.Count){
-			if(employeecontroller.EmployeeList[j].isBusy == false){
-				assignedEmployees.Add(employeecontroller.EmployeeList[j]);
-				employeecontroller.EmployeeList[j].isBusy = true;
+			if(employeecontroller.EmployeeList.ElementAt(j).isBusy == false){
+				assignedEmployees.Add(employeecontroller.EmployeeList.ElementAt(j));
+				employeecontroller.EmployeeList.ElementAt(j).isBusy = true;
 				++i;
 			}
 
@@ -46,8 +47,18 @@ public class Brief{
 		for(int i = 0; i<NumEmployees; i++){
 			ProjectPoints -= assignedEmployees[i].GetProjectPointsRate() *Time.deltaTime;
 		}
+		UpdatePriority();
+		
+	}
+
+	public void PerformProgress(float added){
+		ProjectPoints -= added;
+		UpdatePriority();
+	}
+
+	void UpdatePriority(){
 		elapsedTime += Time.deltaTime;
-		priorityFactor = 1.0f/(deadline - elapsedTime);
+		priorityFactor = 1.0f/(deadline - elapsedTime); 
 	}
 
 	public float PercentageDone(){

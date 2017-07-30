@@ -13,6 +13,6 @@ public class Decline : MonoBehaviour {
     }
 	// Update is called once per frame
 	void TaskOnClick(){
-		Destroy(transform.parent.gameObject);
+		Destroy(transform.parent.gameObject.transform.parent.gameObject);
 	}
 }
