@@ -7,20 +7,32 @@ public class EmployeeController : MonoBehaviour {
 
 	//public List<Employee> EmployeeList = new List<Employee>();
 	public SortedSet<Employee> EmployeeList = new SortedSet<Employee>(new ByQueueLength());
+	
 	public int NumEmployees = 6;
 	public bool isChanged = false;
 	public bool isSpawned = false;
+
+	private BriefController bc;
 	
 	void Start(){
 		for(int i=0; i<NumEmployees; ++i){
-			EmployeeList.Add(new Employee());
+			print(NumEmployees);
+			bool retval = EmployeeList.Add(new Employee(i));
+			print(retval);
 		}
+		bc = gameObject.GetComponent<BriefController>();
+
 		isSpawned = true;
 	}
-	public void AddWork(Brief b, int NumBriefEmployees, float duration){
+	public void AddWork(Brief b, int NumBriefEmployees, float[] duration){
 		for(int i=0; i<NumBriefEmployees; i++){
-			EmployeeList.ElementAt(i).AddWork(b,duration);
+			print(duration[i]);
+			print(EmployeeList.Count);
+			print(EmployeeList.ElementAt(i));
+			EmployeeList.ElementAt(i).AddWork(b,duration[i]);
+			b.AddEmployee(EmployeeList.ElementAt(i));
 		}
+		bc.AddBrief(b);
 	}
 	
 	void Update(){
