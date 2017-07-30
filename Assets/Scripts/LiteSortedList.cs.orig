@@ -1,22 +1,33 @@
-
+<<<<<<< HEAD:Assets/Scripts/SortedList.cs
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Linq;
+=======
 using System;
 using System.Collections.Generic;
+>>>>>>> 3277d42148263e13e76e3a7b4e64a9493a89cdd8:Assets/Scripts/LiteSortedList.cs
 
 //C# contains a sortedset which doesn't allow you to insert elements that are the same as one another.
 //it also contains a mySortedList, which is *really* more like a sorted hashtable.
 //this should be simple enough for our purposes.
 
+<<<<<<< HEAD:Assets/Scripts/SortedList.cs
+public class mySortedList<T> {
+    Comparison<T> comparison;
+
+    private List<T> data = new List<T>();
+
+    public mySortedList<T> (Comparison<T> _comparison){
+=======
 public class LiteSortedList<T> {
     IComparer<T> comparison;
 
-    public List<T> data = new List<T>();
+    private List<T> data = new List<T>();
 
     public LiteSortedList(IComparer<T> _comparison){
+>>>>>>> 3277d42148263e13e76e3a7b4e64a9493a89cdd8:Assets/Scripts/LiteSortedList.cs
         comparison = _comparison;
-    }
-
-    public LiteSortedList(){
-        comparison = Comparer<T>.Default;
     }
 
     //Adding an item will take O(logN) time due to binary search.
@@ -34,17 +45,11 @@ public class LiteSortedList<T> {
         if(range == 0){
             return 0;
         }
-        bool greaterthanstart = comparison.Compare(item, data[start]) > 0;
         if(range == 1){
-            return start + Convert.ToInt32(greaterthanstart);
+            return start + comparison.Compare(item,data[start]);
         }
-        bool greaterthanend = comparison.Compare(item, data[end - 1]) > 0;
-        if(greaterthanend){
+        if(comparison.Compare(item,data[end]) > 0){
             return end;
-        }
-        bool greaterthanmiddle = comparison.Compare(item, data[start + range / 2]) > 0;
-        if (greaterthanmiddle){
-            return BinarySearch(item, start + range / 2, end);
         }
         return BinarySearch(item,start,start + range/2);
     }
@@ -65,19 +70,17 @@ public class LiteSortedList<T> {
     }
 
     public T this[int index]{
-        get{
+        get {
             return data[index];
         }
-        set{
+        set {
             RemoveAt(index);
             Add(value);
         }
     }
 
     public int Count{
-        get{
-            return data.Count;
-        }
+        get {return data.Count;}
     }
 
 }
