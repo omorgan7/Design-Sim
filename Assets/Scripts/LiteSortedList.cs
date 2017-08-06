@@ -79,5 +79,8 @@ public class LiteSortedList<T> {
             return data.Count;
         }
     }
-//     public int FindIndex(Func<WorkChunk, Brief>, )
-// }
+     public int FindIndex( Predicate<T> predicate ){
+            return data.FindIndex(predicate);       
+    }
+
+ }

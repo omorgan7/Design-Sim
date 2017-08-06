@@ -34,36 +34,32 @@ public class Employee{
 	public void RemoveCompletedWork(){
 		WorkQueue.RemoveAt(0);
 	}
-
-	public void UpdatePriorityQueue(Brief a, Brief b){
+	
+	public void UpdatePriorityQueue(Brief a){
 		int index;
-		index = WorkQueue.data.FindIndex(x => x == a);
-		float durationa = WorkQueue.data[index].duration - WorkQueue.data[index].currenttime;
-		WorkQueue.RemoveAt(index); //might fail later;
-		index = WorkQueue.data.FindIndex(x => x == b);
-		float durationb = WorkQueue.data[index].duration - WorkQueue.data[index].currenttime;
-		WorkQueue.RemoveAt(index);
-		AddWork(a, durationa);
-		AddWork(b, durationb);		
+		index = WorkQueue.FindIndex(x => x == a);
+		float durationa = WorkQueue[index].duration - WorkQueue[index].currenttime;
+		WorkQueue.RemoveAt(index); 
+		AddWork(a, durationa);		
 	}
 	public void Update(float TimeFromLastUpdate){
 		float ProjectPointsCompleted = TimeFromLastUpdate*GetProjectPointsRate();
 		if(WorkQueue.Count> 0){
-			WorkQueue.data[0].brief.PerformProgress(ProjectPointsCompleted); 
-			if(WorkQueue.data[0].brief.RemainingProjectPoints()<=0.0f){
+			WorkQueue[0].brief.PerformProgress(ProjectPointsCompleted); 
+			if(WorkQueue[0].brief.RemainingProjectPoints()<=0.0f){
 				RemoveCompletedWork();
 			}
 		}
 		if(WorkQueue.Count>0){
 			float TimeSpent = TimeFromLastUpdate;
 			UpdateBriefTime(TimeSpent);
-			if(WorkQueue.data[0].currenttime>=WorkQueue.data[0].duration){
+			if(WorkQueue[0].currenttime>=WorkQueue[0].duration){
 				RemoveCompletedWork();
 			}
 		}
 	}
 	public void UpdateBriefTime(float TimeSpent){
-		WorkQueue.data[0].currenttime += TimeSpent;
+		WorkQueue[0].currenttime += TimeSpent;
 	}
 }
 
