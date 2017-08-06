@@ -297,7 +297,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxprefab: {fileID: 1567256028378800, guid: c589454cca655463989e06c5b1569534, type: 2}
   yourButton: {fileID: 114917853793703614}
-  btn_text: {fileID: 1443731056321340}
   parent: {fileID: 1698069800180236}
 --- !u!114 &114720146770347580
 MonoBehaviour:
@@ -551,8 +550,8 @@ RectTransform:
   m_Father: {fileID: 224514960254067338}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.05, y: 0.05}
+  m_AnchorMax: {x: 0.5, y: 0.95}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

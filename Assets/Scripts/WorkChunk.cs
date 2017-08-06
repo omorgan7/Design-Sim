@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WorkChunk{
-
     public float timescale = 60f;
-
     public float currenttime = 0f;
     public float duration;
     public Brief brief;

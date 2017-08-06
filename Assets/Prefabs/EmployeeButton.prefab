@@ -118,7 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0540c19b726d36c428646208f89760db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ButtonText: {fileID: 1719024005637022}
   EmployeeOverview: {fileID: 1517446089912078, guid: e050d811a937ecd408ed0804d586fcb2,
     type: 2}
 --- !u!114 &114666790502010930

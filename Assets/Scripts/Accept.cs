@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Accept : MonoBehaviour {
+public class Accept : MonoBehaviour { //CLOSES BUTTON AND PARENT
 
 	private Button yourButton;
 

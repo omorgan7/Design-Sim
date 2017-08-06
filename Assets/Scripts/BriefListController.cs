@@ -5,19 +5,12 @@ using UnityEngine.UI;
 
 
 public class BriefListController : MonoBehaviour {
-
-
 	public GameObject buttonprefab ;
 	public float uiOffset = 0.15f;
 	public RectTransform contentPanel;
-
 	private BriefController BC;
 	private ArrowController AC;
-	private float height;
-	private float width;
-	private float buttonheight;
 
-	// Use this for initialization
 	void Start () {
 		contentPanel = gameObject.GetComponent<RectTransform>();
 		GameObject EventSystem = GameObject.Find("EventSystem");
