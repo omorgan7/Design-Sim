@@ -23,6 +23,9 @@ public class Employee{
 	public float GetProjectPointsRate(){
 		return (float) rank * BaseProjectPointsRate;
 	}
+	public int GetID(){
+		return id;
+	}
 
 	public float GetCost(){
 		return Mathf.Pow(2, (float) rank);
