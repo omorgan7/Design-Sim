@@ -49,14 +49,18 @@ public class Employee{
 	}
 	public void Update(float TimeFromLastUpdate){
 		float ProjectPointsCompleted = TimeFromLastUpdate*GetProjectPointsRate();
-		WorkQueue.data[0].brief.PerformProgress(ProjectPointsCompleted); 
-		if(WorkQueue.data[0].brief.RemainingProjectPoints()<=0.0f){
-			RemoveCompletedWork();
+		if(WorkQueue.Count> 0){
+			WorkQueue.data[0].brief.PerformProgress(ProjectPointsCompleted); 
+			if(WorkQueue.data[0].brief.RemainingProjectPoints()<=0.0f){
+				RemoveCompletedWork();
+			}
 		}
-		float TimeSpent = TimeFromLastUpdate;
-		UpdateBriefTime(TimeSpent);
-		if(WorkQueue.data[0].currenttime>=WorkQueue.data[0].duration){
-			RemoveCompletedWork();
+		if(WorkQueue.Count>0){
+			float TimeSpent = TimeFromLastUpdate;
+			UpdateBriefTime(TimeSpent);
+			if(WorkQueue.data[0].currenttime>=WorkQueue.data[0].duration){
+				RemoveCompletedWork();
+			}
 		}
 	}
 	public void UpdateBriefTime(float TimeSpent){

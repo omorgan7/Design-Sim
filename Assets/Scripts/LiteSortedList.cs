@@ -54,7 +54,7 @@ public class LiteSortedList<T> {
         data.Remove(item);
     }
 
-    public T this[int index]{
+    public T this[int index]{ //overloading []
         get {
             return data[index];
         }
@@ -67,5 +67,5 @@ public class LiteSortedList<T> {
     public int Count{
         get {return data.Count;}
     }
-
-}
+//     public int FindIndex(Func<WorkChunk, Brief>, )
+// }
