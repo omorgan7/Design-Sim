@@ -79,7 +79,7 @@ public class LiteSortedList<T> {
             return data.Count;
         }
     }
-     public int FindIndex( Predicate<T> predicate ){
+    public int FindIndex( Predicate<T> predicate ){
             return data.FindIndex(predicate);       
     }
 
