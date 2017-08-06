@@ -6,7 +6,7 @@ using UnityEngine;
 public class EmployeeController : MonoBehaviour {
 
 	//public List<Employee> EmployeeList = new List<Employee>();
-	public SortedSet<Employee> EmployeeList = new SortedSet<Employee>(new ByQueueLength());
+	public LiteSortedList<Employee> EmployeeList = new LiteSortedList<Employee>(new ByQueueLength());
 	
 	public int NumEmployees = 6;
 	public bool isChanged = false;
@@ -16,9 +16,7 @@ public class EmployeeController : MonoBehaviour {
 	
 	void Start(){
 		for(int i=0; i<NumEmployees; ++i){
-			print(NumEmployees);
-			bool retval = EmployeeList.Add(new Employee(i));
-			print(retval);
+			EmployeeList.Add(new Employee(i));
 		}
 		bc = gameObject.GetComponent<BriefController>();
 
@@ -28,16 +26,16 @@ public class EmployeeController : MonoBehaviour {
 		for(int i=0; i<NumBriefEmployees; i++){
 			print(duration[i]);
 			print(EmployeeList.Count);
-			print(EmployeeList.ElementAt(i));
-			EmployeeList.ElementAt(i).AddWork(b,duration[i]);
-			b.AddEmployee(EmployeeList.ElementAt(i));
+			print(EmployeeList[i]);
+			EmployeeList[i].AddWork(b,duration[i]);
+			b.AddEmployee(EmployeeList[i]);
 		}
 		bc.AddBrief(b);
 	}
 	
 	void Update(){
 		for(int i=0; i<NumEmployees; ++i){
-			EmployeeList.ElementAt(i).Update(Time.deltaTime);
+			EmployeeList[i].Update(Time.deltaTime);
 		}
 	}
 }
