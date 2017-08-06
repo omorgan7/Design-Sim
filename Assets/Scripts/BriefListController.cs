@@ -19,10 +19,6 @@ public class BriefListController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-<<<<<<< HEAD
-		reference = buttonprefab.GetComponent<RectTransform>();
-=======
->>>>>>> 111847ba88ab7e1decbb69cf2935ae890c9ac3ac
 		contentPanel = gameObject.GetComponent<RectTransform>();
 		GameObject EventSystem = GameObject.Find("EventSystem");
 		BC = EventSystem.GetComponent<BriefController>();
