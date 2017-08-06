@@ -35,7 +35,6 @@ public class Employee{
 		WorkQueue.RemoveAt(0);
 	}
 
-
 	public void UpdatePriorityQueue(Brief a, Brief b){
 		int index;
 		index = WorkQueue.data.FindIndex(x => x == a);
