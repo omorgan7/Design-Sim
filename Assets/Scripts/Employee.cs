@@ -46,9 +46,11 @@ public class Employee{
 		AddWork(a, durationa);
 		AddWork(b, durationb);		
 	}
+
 	public void Update(float TimeFromLastUpdate){
 		float ProjectPointsCompleted = TimeFromLastUpdate*GetProjectPointsRate();
-		if(WorkQueue.Count> 0){
+		Debug.Log(WorkQueue.Count);
+		if(WorkQueue.Count > 0){
 			WorkQueue.data[0].brief.PerformProgress(ProjectPointsCompleted); 
 			if(WorkQueue.data[0].brief.RemainingProjectPoints()<=0.0f){
 				RemoveCompletedWork();

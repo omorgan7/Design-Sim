@@ -68,5 +68,6 @@ public class BriefController : MonoBehaviour {
 		for (int i=0; i<BriefsList[from].NumEmployees; ++i){
 			BriefsList[from].assignedEmployees[i].UpdatePriorityQueue(temp,BriefsList[from]);
 		}
+		
 	}
 }
