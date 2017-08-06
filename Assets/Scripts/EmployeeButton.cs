@@ -10,6 +10,7 @@ public class EmployeeButton : MonoBehaviour {
 	private EmployeeController EC;
 	private Text txt;
 	private GameObject box;
+	private Employee employee;
 
 	// Use this for initialization
 	void Start () {
@@ -29,9 +30,12 @@ public class EmployeeButton : MonoBehaviour {
 		box = Instantiate(EmployeeOverview);
 		box.GetComponent<RectTransform>().SetParent(U.transform,false);
 		UITransform.SetTransform(box,EmployeeOverview,0,0);
+		EmployeePanelData E = box.GetComponent<EmployeePanelData>();
+		E.SetUp(employee);
 	}
-	public void SetUp(Employee E){
+	public void SetUp(Employee _employee){
+		employee = _employee;
 		txt = ButtonText.GetComponent<Text>();
-		txt.text =(E.id).ToString();
+		txt.text =(employee.id).ToString();
 	}
 }
