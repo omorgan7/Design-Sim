@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef2204e6d4741774e95074fdd831087e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ModalBox: {fileID: 1567256028378800, guid: c589454cca655463989e06c5b1569534, type: 2}
+  boxprefab: {fileID: 1567256028378800, guid: c589454cca655463989e06c5b1569534, type: 2}
   yourButton: {fileID: 114917853793703614}
   btn_text: {fileID: 1443731056321340}
   parent: {fileID: 1698069800180236}

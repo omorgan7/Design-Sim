@@ -11,7 +11,6 @@ public class BriefListController : MonoBehaviour {
 	public float uiOffset = 0.15f;
 	public RectTransform contentPanel;
 
-	private RectTransform reference;
 	private BriefController BC;
 	private ArrowController AC;
 	private float height;
@@ -20,7 +19,10 @@ public class BriefListController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+<<<<<<< HEAD
 		reference = buttonprefab.GetComponent<RectTransform>();
+=======
+>>>>>>> 111847ba88ab7e1decbb69cf2935ae890c9ac3ac
 		contentPanel = gameObject.GetComponent<RectTransform>();
 		GameObject EventSystem = GameObject.Find("EventSystem");
 		BC = EventSystem.GetComponent<BriefController>();
@@ -37,14 +39,13 @@ public class BriefListController : MonoBehaviour {
 			GameObject newbutton = Instantiate(buttonprefab);
 			newbutton.GetComponent<RectTransform>().SetParent(gameObject.transform,false);
 			UITransform.SetTransform(newbutton,buttonprefab,0,i*uiOffset);
-
 			ArrowController Arrows = newbutton.GetComponent<ArrowController>();
 			Arrows.inputPosition(i);
 			TaskButtons sampleButton = newbutton.GetComponent<TaskButtons>();
 			sampleButton.Setup(BC.BriefsList[i]);
 		}
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if(BC.isChanged == true){
