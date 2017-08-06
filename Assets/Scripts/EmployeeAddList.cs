@@ -47,6 +47,7 @@ public class EmployeeAddList : MonoBehaviour {
 		rt.anchorMax = new Vector2(reference.anchorMax.x,reference.anchorMax.y-idx*uiOffset);
 		rt.anchorMin = new Vector2(reference.anchorMin.x,reference.anchorMin.y-idx*uiOffset);
 	}
+	
 	public void FinishBriefs(){
 		if(idx < 0){
 			return;
@@ -60,7 +61,6 @@ public class EmployeeAddList : MonoBehaviour {
 			++count;
 		}
 		ec.AddWork(new Brief(),idx+1,durations);
-		bc.AddBrief(idx+1);
 		Destroy(gameObject);
 	}
 

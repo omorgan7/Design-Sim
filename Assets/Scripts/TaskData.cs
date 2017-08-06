@@ -11,7 +11,6 @@ public class TaskData : MonoBehaviour {
 	public GameObject deadline;
 	public GameObject cost;
 	public GameObject panel;
-	public GameObject close;
 	public Button closeButton;
 	
 	private BriefController BC;
@@ -29,7 +28,7 @@ public class TaskData : MonoBehaviour {
 	
 	}
 	void TaskOnClick(){
-		Destroy(close);
+		Destroy(gameObject);
 	}
 	// Update is called once per frame
 	void Update () {

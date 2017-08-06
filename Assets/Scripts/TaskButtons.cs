@@ -9,12 +9,15 @@ public class TaskButtons : MonoBehaviour {
 	public GameObject btn_text;
 	
 	private Brief brief;
-
+	private GameObject UI;
 	private GameObject box;
 	public GameObject parent;
 	private BriefController BC;
 	private Text txt;
 
+	void Awake(){
+
+	}
 
 	// Use this for initialization
 	void Start (){
@@ -26,8 +29,8 @@ public class TaskButtons : MonoBehaviour {
 	}
 	public void TaskOnClick(){
 		box = Instantiate(ModalBox,Vector3.zero,Quaternion.identity);
-		GameObject boxPanel= GameObject.Find("BoxPanel");
-		TaskData data = boxPanel.GetComponent<TaskData>();
+		
+		TaskData data = box.GetComponent<TaskData>();
 		data.Setup(brief);
 	}
 
