@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UITransform : MonoBehaviour{
-    public static void SetTransform(GameObject obj, GameObject reference, float yOffset,float xOffset){
+    public static void SetTransform(GameObject obj, GameObject reference, float xOffset,float yOffset){
 		RectTransform objRT = obj.GetComponent<RectTransform>();
         RectTransform refRT = reference.GetComponent<RectTransform>();
 		objRT.offsetMax = Vector2.zero;
