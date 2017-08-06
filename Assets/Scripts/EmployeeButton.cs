@@ -17,6 +17,7 @@ public class EmployeeButton : MonoBehaviour {
 		btn.onClick.AddListener(TaskOnClick);
 		GameObject EventSystem = GameObject.Find("EventSystem");
 		EC = EventSystem.GetComponent<EmployeeController>();
+	
 	}
 	
 	// Update is called once per frame
@@ -24,13 +25,13 @@ public class EmployeeButton : MonoBehaviour {
 		
 	}
 	void TaskOnClick(){
-		box = Instantiate(EmployeeOverview,Vector3.zero,Quaternion.identity);
-		GameObject boxPanel= GameObject.Find("BoxPanel");
-		// TaskData data = boxPanel.GetComponent<TaskData>();
-		// data.Setup(brief);
+		GameObject U = GameObject.Find("UI");
+		box = Instantiate(EmployeeOverview);
+		box.GetComponent<RectTransform>().SetParent(U.transform,false);
+		UITransform.SetTransform(box,EmployeeOverview,0,0);
 	}
 	public void SetUp(Employee E){
 		txt = ButtonText.GetComponent<Text>();
-		txt.text ="  " +  (E.id).ToString();
+		txt.text =(E.id).ToString();
 	}
 }

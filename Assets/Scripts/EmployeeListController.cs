@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class EmployeeListController : MonoBehaviour {
 
-	public GameObject button;
+	public GameObject buttonprefab;
 	private EmployeeController EC;
 	private float width;
 	private float height;
 	private RectTransform reference;
 	private float buttonheight;
+	public float uiOffset = 0.15f;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +20,7 @@ public class EmployeeListController : MonoBehaviour {
 		reference = gameObject.GetComponent<RectTransform>();
 		width = reference.rect.width;
 		height = reference.rect.height;
-		buttonheight = button.GetComponent<RectTransform> ().rect.height;
+		buttonheight = buttonprefab.GetComponent<RectTransform> ().rect.height;
 		StartCoroutine(DelayedStart());	
 		
 	}
@@ -28,21 +29,14 @@ public class EmployeeListController : MonoBehaviour {
 			yield return null;
 		}
 		for(int i=0; i<EC.NumEmployees; ++i){
-			GameObject newButton = Instantiate(button);
-			SetButtonTransform(newButton,i);
-			newButton.transform.SetParent(reference.transform, false);
-			EmployeeButton sampleButton = newButton.GetComponent<EmployeeButton>();
+			GameObject newbutton = Instantiate(buttonprefab);
+			newbutton.GetComponent<RectTransform>().SetParent(gameObject.transform,false);
+			UITransform.SetTransform(newbutton,buttonprefab,0, i*uiOffset);
+			EmployeeButton sampleButton = newbutton.GetComponent<EmployeeButton>();
 			sampleButton.SetUp(EC.EmployeeList[i]);
 		}
 	}
-	void SetButtonTransform(GameObject newbutton, int idx){
-		RectTransform rt = newbutton.GetComponent<RectTransform>();
-		rt.SetParent(gameObject.transform,false);
-		rt.offsetMax = Vector2.zero;
-		rt.offsetMin = Vector2.zero;
-		rt.anchorMax = new Vector2(reference.anchorMax.x,reference.anchorMax.y-idx*uiOffset);
-		rt.anchorMin = new Vector2(reference.anchorMin.x,reference.anchorMin.y-idx*uiOffset);
-	}
+	
 	
 	// Update is called once per frame
 	void Update () {

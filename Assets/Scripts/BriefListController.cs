@@ -20,7 +20,7 @@ public class BriefListController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		reference = button.GetComponent<RectTransform>();
+		reference = buttonprefab.GetComponent<RectTransform>();
 		contentPanel = gameObject.GetComponent<RectTransform>();
 		GameObject EventSystem = GameObject.Find("EventSystem");
 		BC = EventSystem.GetComponent<BriefController>();
@@ -37,7 +37,7 @@ public class BriefListController : MonoBehaviour {
 			GameObject newbutton = Instantiate(buttonprefab);
 			newbutton.GetComponent<RectTransform>().SetParent(gameObject.transform,false);
 			UITransform.SetTransform(newbutton,buttonprefab,0,i*uiOffset);
-			SetButtonTransform(newbutton,i);
+
 			ArrowController Arrows = newbutton.GetComponent<ArrowController>();
 			Arrows.inputPosition(i);
 			TaskButtons sampleButton = newbutton.GetComponent<TaskButtons>();
