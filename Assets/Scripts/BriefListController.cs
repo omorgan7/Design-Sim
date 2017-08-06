@@ -10,7 +10,6 @@ public class BriefListController : MonoBehaviour {
 	public GameObject button;
 	private BriefController BC;
 	private ArrowController AC;
-	private bool onebutton = false;
 	private float height;
 	private float width;
 	private float buttonheight;
