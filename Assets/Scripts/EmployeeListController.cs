@@ -9,16 +9,16 @@ public class EmployeeListController : MonoBehaviour {
 	private EmployeeController EC;
 	private float width;
 	private float height;
-	private RectTransform panel;
+	private RectTransform reference;
 	private float buttonheight;
 
 	// Use this for initialization
 	void Start () {
 		GameObject EventSystem = GameObject.Find("EventSystem");
 		EC = EventSystem.GetComponent<EmployeeController>();
-		panel = gameObject.GetComponent<RectTransform>();
-		width = panel.rect.width;
-		height = panel.rect.height;
+		reference = gameObject.GetComponent<RectTransform>();
+		width = reference.rect.width;
+		height = reference.rect.height;
 		buttonheight = button.GetComponent<RectTransform> ().rect.height;
 		StartCoroutine(DelayedStart());	
 		
@@ -28,12 +28,20 @@ public class EmployeeListController : MonoBehaviour {
 			yield return null;
 		}
 		for(int i=0; i<EC.NumEmployees; ++i){
-			Vector3 pos = new Vector3(- width/2.0f, height/2.0f-(buttonheight + 5.0f)*(i+1), 0.0f );
-			GameObject newButton = Instantiate(button, pos, Quaternion.identity);
-			newButton.transform.SetParent(panel.transform, false);
+			GameObject newButton = Instantiate(button);
+			SetButtonTransform(newButton,i);
+			newButton.transform.SetParent(reference.transform, false);
 			EmployeeButton sampleButton = newButton.GetComponent<EmployeeButton>();
 			sampleButton.SetUp(EC.EmployeeList[i]);
 		}
+	}
+	void SetButtonTransform(GameObject newbutton, int idx){
+		RectTransform rt = newbutton.GetComponent<RectTransform>();
+		rt.SetParent(gameObject.transform,false);
+		rt.offsetMax = Vector2.zero;
+		rt.offsetMin = Vector2.zero;
+		rt.anchorMax = new Vector2(reference.anchorMax.x,reference.anchorMax.y-idx*uiOffset);
+		rt.anchorMin = new Vector2(reference.anchorMin.x,reference.anchorMin.y-idx*uiOffset);
 	}
 	
 	// Update is called once per frame
