@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 114163800524654312}
   - component: {fileID: 114183353851076694}
   m_Layer: 5
-  m_Name: Modal Popup
+  m_Name: ModalDialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

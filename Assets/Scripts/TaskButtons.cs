@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class TaskButtons : MonoBehaviour {
-	public GameObject ModalBox;
+	public GameObject boxprefab;
 	public Button yourButton;
 	public GameObject btn_text;
 	
@@ -16,7 +16,7 @@ public class TaskButtons : MonoBehaviour {
 	private Text txt;
 
 	void Awake(){
-
+		UI = GameObject.Find("UI");
 	}
 
 	// Use this for initialization
@@ -27,9 +27,11 @@ public class TaskButtons : MonoBehaviour {
 		BC = EventSystem.GetComponent<BriefController>();
 		
 	}
+	
 	public void TaskOnClick(){
-		box = Instantiate(ModalBox,Vector3.zero,Quaternion.identity);
-		
+		box = Instantiate(boxprefab,Vector3.zero,Quaternion.identity);
+		box.GetComponent<RectTransform>().SetParent(UI.transform,false);
+		UITransform.SetTransform(box,boxprefab,0,0);
 		TaskData data = box.GetComponent<TaskData>();
 		data.Setup(brief);
 	}
