@@ -19,7 +19,6 @@ public class EmployeeController : MonoBehaviour {
 			EmployeeList.Add(new Employee(i));
 		}
 		bc = gameObject.GetComponent<BriefController>();
-
 		isSpawned = true;
 	}
 	public void AddWork(Brief b, int NumBriefEmployees, float[] duration){
@@ -31,7 +30,7 @@ public class EmployeeController : MonoBehaviour {
 			b.AddEmployee(EmployeeList[i]);
 		}
 		bc.AddBrief(b);
-	}
+	}	
 	
 	void Update(){
 		for(int i=0; i<NumEmployees; ++i){

@@ -8,6 +8,7 @@ public class BriefController : MonoBehaviour {
 	public EmployeeController ec;
 	public int BriefLength = 0;
 	public bool isChanged;
+	
 	//Brief brief;
 	// Use this for initialization
 	void Start(){

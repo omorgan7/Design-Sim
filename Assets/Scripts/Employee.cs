@@ -57,7 +57,7 @@ public class Employee{
 		if(WorkQueue.Count>0){
 			float TimeSpent = TimeFromLastUpdate;
 			UpdateBriefTime(TimeSpent);
-			if(WorkQueue[0].currenttime>=WorkQueue[0].duration){
+			if(WorkQueue[0].currenttime >= WorkQueue[0].duration){
 				RemoveCompletedWork();
 			}
 		}
