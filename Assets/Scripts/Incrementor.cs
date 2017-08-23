@@ -19,6 +19,10 @@ public class Incrementor : MonoBehaviour {
 		numbertext.text = num.ToString();
 	}
 
+	public int ReturnNum(){
+		return num;
+	}
+
 	public void Addone(){
 		++num;
 	}

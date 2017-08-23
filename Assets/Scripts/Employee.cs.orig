@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -23,9 +23,6 @@ public class Employee{
 	public float GetProjectPointsRate(){
 		return (float) rank * BaseProjectPointsRate;
 	}
-	public int GetID(){
-		return id;
-	}
 
 	public float GetCost(){
 		return Mathf.Pow(2, (float) rank);
@@ -48,16 +45,23 @@ public class Employee{
 
 	public void Update(float TimeFromLastUpdate){
 		float ProjectPointsCompleted = TimeFromLastUpdate*GetProjectPointsRate();
+<<<<<<< HEAD
+		Debug.Log(WorkQueue.Count);
+		if(WorkQueue.Count > 0){
+			WorkQueue.data[0].brief.PerformProgress(ProjectPointsCompleted); 
+			if(WorkQueue.data[0].brief.RemainingProjectPoints()<=0.0f){
+=======
 		if(WorkQueue.Count> 0){
 			WorkQueue[0].brief.PerformProgress(ProjectPointsCompleted); 
 			if(WorkQueue[0].brief.RemainingProjectPoints()<=0.0f){
+>>>>>>> 4bae5320c52c5de7bcd890f6a7b277d4e0d3ca94
 				RemoveCompletedWork();
 			}
 		}
 		if(WorkQueue.Count>0){
 			float TimeSpent = TimeFromLastUpdate;
 			UpdateBriefTime(TimeSpent);
-			if(WorkQueue[0].currenttime >= WorkQueue[0].duration){
+			if(WorkQueue[0].currenttime>=WorkQueue[0].duration){
 				RemoveCompletedWork();
 			}
 		}

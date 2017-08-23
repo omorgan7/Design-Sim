@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Brief{
@@ -7,7 +8,7 @@ public class Brief{
 	private string BriefName ;
 	private float ProjectPoints, InitialProjectPoints;
 	public EmployeeController employeecontroller;
-	List<Employee> assignedEmployees = new List<Employee>();
+	public List<Employee> assignedEmployees = new List<Employee>();
 	public int NumEmployees = 0;
 	public float Cost;
 	public float time;
@@ -24,30 +25,36 @@ public class Brief{
 		InitialProjectPoints = ProjectPoints;
 		Cost = 50f;
 		reward = 100f;
-		int i =0;
-		int j =0;
-		while(i < _NumEmployees && j <employeecontroller.EmployeeList.Count){
-			if(employeecontroller.EmployeeList[j].isBusy == false){
-				assignedEmployees.Add(employeecontroller.EmployeeList[j]);
-				employeecontroller.EmployeeList[j].isBusy = true;
-				++i;
-			}
+	}
 
-			++j;
-		}
-		NumEmployees = i;
+	public Brief(){
+		BriefName = "Test Project2";
+		ProjectPoints = 10f;
+		InitialProjectPoints = ProjectPoints;
+		Cost = 50f;
+		reward = 100f;
 	}
 
 	public float RemainingProjectPoints(){
 		return ProjectPoints;
 	}
 
-	public void PerformProgress(){
+	public void PerformProgress(){ 
 		for(int i = 0; i<NumEmployees; i++){
 			ProjectPoints -= assignedEmployees[i].GetProjectPointsRate() *Time.deltaTime;
 		}
+		UpdatePriority();
+		
+	}
+
+	public void PerformProgress(float added){
+		ProjectPoints -= added;
+		UpdatePriority();
+	}
+
+	void UpdatePriority(){
 		elapsedTime += Time.deltaTime;
-		priorityFactor = 1.0f/(deadline - elapsedTime);
+		priorityFactor = 1.0f/(deadline - elapsedTime); 
 	}
 
 	public float PercentageDone(){
@@ -58,10 +65,21 @@ public class Brief{
 		assignedEmployees.Add(new Employee());
 		NumEmployees++;
 	}
+
+	public void AddEmployee(Employee e){
+		assignedEmployees.Add(e);
+		++NumEmployees;
+	}
+	
 	public void RemoveEmployee(int EmployeeIndex){
 		assignedEmployees[EmployeeIndex].isBusy = false;
 		assignedEmployees.RemoveAt(EmployeeIndex);
 		NumEmployees--;
+	}
+
+	public void RemoveEmployee(Employee e){
+		assignedEmployees.Remove(e);
+		--NumEmployees;
 	}
 
 	public string GetBriefName(){
@@ -79,7 +97,7 @@ public class Brief{
 	public string GetProjectReward(){
 		return reward.ToString();
 	}
-	public string GetProjectDeadline(){
+	public string GetProjectdeadline(){
 		return deadline.ToString();
 	}
 	public void ChangeName(string name){

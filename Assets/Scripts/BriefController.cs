@@ -8,6 +8,7 @@ public class BriefController : MonoBehaviour {
 	public EmployeeController ec;
 	public int BriefLength = 0;
 	public bool isChanged;
+	
 	//Brief brief;
 	// Use this for initialization
 	void Start(){
@@ -23,7 +24,6 @@ public class BriefController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		for(int i =0; i<BriefLength; i++){
-			BriefsList[i].PerformProgress();
 			if(BriefsList[i].RemainingProjectPoints() <= 0.0f){
 				BriefsList.RemoveAt(i);
 				BriefLength--;
@@ -35,6 +35,12 @@ public class BriefController : MonoBehaviour {
 	public void AddBrief(int NumEmployees){
 		BriefsList.Add(new Brief(NumEmployees,ec));
 		BriefLength++;
+		isChanged = true;
+	}
+
+	public void AddBrief(Brief b){
+		BriefsList.Add(b);
+		++BriefLength;
 		isChanged = true;
 	}
 
@@ -56,5 +62,13 @@ public class BriefController : MonoBehaviour {
 		BriefsList[from] = BriefsList[to];
 		BriefsList[to] = temp;
 		isChanged = true;
+
+		for (int i=0; i<temp.NumEmployees; ++i){
+			temp.assignedEmployees[i].UpdatePriorityQueue(temp);
+		}
+		for (int i=0; i<BriefsList[from].NumEmployees; ++i){
+			BriefsList[from].assignedEmployees[i].UpdatePriorityQueue(BriefsList[from]);
+		}
+		
 	}
 }

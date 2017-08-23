@@ -11,20 +11,24 @@ public class EmployeeAddList : MonoBehaviour {
 	public List<GameObject> EmployeeViews = new List<GameObject>();
 	
 	private int idx = -1;
-	private RectTransform reference;
 	private BriefController bc;
+	private EmployeeController ec;
 
 	void Start(){
-		reference = EmployeeViewPrefab.GetComponent<RectTransform>();
 		GameObject eventsystem = GameObject.Find("EventSystem");
 		bc = eventsystem.GetComponent<BriefController>();
+		ec = eventsystem.GetComponent<EmployeeController>();
 	}
 
 	public void AddEmployee(){
-		EmployeeViews.Add(Instantiate<GameObject>(EmployeeViewPrefab));
-		++idx;
-		SetTransform();
+		if(idx + 1 < ec.NumEmployees){
+			EmployeeViews.Add(Instantiate<GameObject>(EmployeeViewPrefab));
+			++idx;
+			EmployeeViews[idx].GetComponent<RectTransform>().SetParent(ScrollViewContent.transform,false);
+			UITransform.SetTransform(EmployeeViews[idx],EmployeeViewPrefab,0,idx*uiOffset);
+		}
 	}
+	
 	public void RemoveEmployee(){
 		if(idx < 0){
 			return;
@@ -33,19 +37,20 @@ public class EmployeeAddList : MonoBehaviour {
 		EmployeeViews.RemoveAt(idx);
 		--idx;
 	}
-	void SetTransform(){
-		RectTransform rt = EmployeeViews[idx].GetComponent<RectTransform>();
-		rt.SetParent(ScrollViewContent.transform,false);
-		rt.offsetMax = Vector2.zero;
-		rt.offsetMin = Vector2.zero;
-		rt.anchorMax = new Vector2(reference.anchorMax.x,reference.anchorMax.y-idx*uiOffset);
-		rt.anchorMin = new Vector2(reference.anchorMin.x,reference.anchorMin.y-idx*uiOffset);
-	}
+
 	public void FinishBriefs(){
 		if(idx < 0){
 			return;
 		}
-		bc.AddBrief(idx);
+		print(idx);
+		
+		float[] durations = new float[idx+1];
+		int count = 0;
+		foreach(var ev in EmployeeViews){
+			durations[count] = (float) ev.GetComponentInChildren<Incrementor>().ReturnNum();
+			++count;
+		}
+		ec.AddWork(new Brief(),idx+1,durations);
 		Destroy(gameObject);
 	}
 
